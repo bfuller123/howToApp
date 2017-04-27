@@ -1,0 +1,9 @@
+***CSS notes***
+
+Distance between lines of text on page with the golden ration of 1.5x font-family
+
+**font side** should be at least 16px on modern pages
+
+**line length** should be around 50-75 characters
+
+line-height is a CSS property and can be changed if desired.
