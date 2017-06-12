@@ -105,7 +105,7 @@ h4 {
   letter-spacing: 5px;
   float: left;
   color: #ffffff;
-  padding: 0.25% 1%;
+  padding: 0.25% 3%;
   margin-right: 1%;
 }
 
@@ -121,6 +121,18 @@ h4 {
   border: 2px solid #7A7574;
   padding: 1%;
   border-radius: 35%;
+}
+
+.button-nav {
+  float: right;
+  height: 100%;
+  width: 8%;
+  border-radius: 0 !important;
+  font-weight: bolder;
+}
+
+.navbar #signUpButton {
+  margin-right: .5%;
 }
 
 .is-primary {
