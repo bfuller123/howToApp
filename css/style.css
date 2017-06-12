@@ -36,6 +36,10 @@ white: #ffffff
 .white-background {
   background-color: #ffffff;
 }
+
+.clear {
+  opacity: 0;
+}
 /*fonts*/
 .dark-gray-font {
   color: #1B242B;
@@ -145,4 +149,19 @@ h4 {
   background-color: #1B242B !important;
   color: #009085 !important;
   font-weight: bolder;
+}
+
+#carousel-button-left, #carousel-button-right {
+  text-align: center;
+  padding: 33% 0 !important;
+}
+
+.card {
+  height: 500px !important;
+  width: 300px !important;
+  margin: 0 1%;
+}
+
+.card img {
+  height: 175px !important;
 }
