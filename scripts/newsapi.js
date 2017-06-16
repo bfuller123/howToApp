@@ -1,13 +1,5 @@
-8bcf7b67fec74a178a6c2ce0e225b91a
-
-https://newsapi.org/v1/articles
-https://newsapi.org/v1/sources
-
-
-var queryURL = "https://newsapi.org/v1/articles?source=techcrunch&apiKey=8bcf7b67fec74a178a6c2ce0e225b91a"
-
-
-https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=8bcf7b67fec74a178a6c2ce0e225b91a
+var keyword = ;
+var queryURL = "http://webhose.io/filterWebContent?token=dc252ff5-eb47-47ca-ad9a-504e1d3d7852&format=json&ts=1495063069223&sort=relevancy&q=language%3Aenglish%20" + keyword;
 
 $.ajax({
 	url: queryURL,
@@ -15,10 +7,4 @@ $.ajax({
 }).done(function(response) {
 	console.log(response)
 });
-
-https://docs.webhose.io/
-
-http://eventregistry.org/searchEvents
-
-blog aggregator
 
