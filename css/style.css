@@ -160,7 +160,7 @@ h4 {
   letter-spacing: 5px;
   float: left;
   color: #ffffff;
-  padding: 0.25% 3%;
+  padding: 0.25% 2.5%;
   margin-right: 1%;
 }
 
@@ -235,7 +235,6 @@ h4 {
 
 /*resource panel page*/
 
-.weekdayCheckbox {
-  list-style-type: none !important;
-  margin-left: 1%;
+.createButton {
+  list-style-type: none;
 }
