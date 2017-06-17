@@ -1,3 +1,4 @@
+
 var googleApi = {
     key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
     url: 'https://www.googleapis.com/books/v1/volumes?',
@@ -34,3 +35,5 @@ $('.autoplay').slick({
     autoplay: true,
     autoplaySpeed: 2000,
 });
+
+
