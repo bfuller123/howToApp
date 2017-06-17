@@ -30,5 +30,4 @@ function truncateString(str, num) {
         str = str.substring(0, num);
         return str + "...";
     }
-
 }
