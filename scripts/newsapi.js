@@ -1,15 +1,18 @@
-var keyword = "cooking";
-var queryURL = "http://webhose.io/filterWebContent?token=dc252ff5-eb47-47ca-ad9a-504e1d3d7852&format=json&ts=1495063069223&size=6&sort=relevancy&q=language%3Aenglish%20" + keyword;
+var keyword = "";
+var queryURL = "http://webhose.io/filterWebContent?token=dc252ff5-eb47-47ca-ad9a-504e1d3d7852&format=json&ts=1495063069223&size=3&sort=relevancy&q=language%3Aenglish%20" + keyword;
 
 $.ajax({
-	url: queryURL,
-	method: "GET"
+    url: queryURL,
+    method: "GET"
 }).done(function(response) {
-    console.log(response)
+    console.log(response);
     for (var i = 0; i < response.posts.length; i++) {
         var newArticleDiv = $("<div class='content'>");
-        var articleTitle = $("<a href='"resonse.posts[i].url"'><p>").text(response.posts[i].title);
-        var articleBlurb = $("<p>").text("")
+        var articleTitle = $("<a href='" + response.posts[i].url + " target='_blank'><p>").text(response.posts[i].title);
+
+        var truncatedText = truncateString(response.posts[i].text, 200)
+
+        var articleBlurb = $("<p>").text(truncatedText);
 
         newArticleDiv.append(articleTitle);
         newArticleDiv.append(articleBlurb);
@@ -18,3 +21,13 @@ $.ajax({
     };
 
 });
+
+function truncateString(str, num) {
+    if (num > str.length) {
+        return str;
+    } else {
+        str = str.substring(0, num);
+        return str + "...";
+    }
+
+}
