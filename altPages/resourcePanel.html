@@ -96,18 +96,18 @@
       <div class="tile is-ancestor is-marginless">
         <div class="column">
           <div class="tile is-child notification is-warning">
-            <p class="title">Title</p>
-            <p class="subtitle">Author</p>
-            <figure class="image is-128x128">
+            <p class="title" id="bookOneTitle">Title</p>
+            <p class="subtitle" id="bookOneAuthor">Author</p>
+            <figure class="image is-128x128" id='bookOneImage'>
               <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
             </figure>
           </div>
         </div>
         <div class="column">
           <div class="tile is-child notification is-warning">
-            <p class="title">Title</p>
-            <p class="subtitle">Author</p>
-            <figure class="image is-128x128">
+            <p class="title" id="bookTwoTitle">Title</p>
+            <p class="subtitle" id="bookTwoAuthor">Author</p>
+            <figure class="image is-128x128" id='bookTwoImage'>
               <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
             </figure>
           </div>
@@ -115,7 +115,7 @@
       </div>
       <!-- Articles resources  -->
       <div class="tile is-parent">
-        <article class="tile is-child notification is-info">
+        <article class="tile is-child notification is-info" id="articleContent">
           <p class="title">Article</p>
           <p class="subtitle"><a>Article link</a></p>
         </article>
@@ -123,7 +123,7 @@
       <!-- Create Course Button -->
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-primary">
-          <a href="#">
+          <a href="#" id='creat-course-link'>
             <p class="title">Create Course</p>
           </a>
         </article>
@@ -135,5 +135,8 @@
   <!-- Youtube API logic -->
   <script type="text/javascript" src="../scripts/youtubeapi.js"></script>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../scripts/googlebooksapi.js"></script>
+<script type="text/javascript" src="../scripts/newsapi.js"></script>
 
 </html>

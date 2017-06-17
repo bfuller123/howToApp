@@ -9,5 +9,5 @@ $(".modal-background").on("click", function() {
 })
 
 $("#loginButton").on("click", function() {
-    $(".sign-in").addClass("is-active");
+    $(".login").addClass("is-active");
 })
