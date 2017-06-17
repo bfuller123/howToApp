@@ -11,8 +11,8 @@ firebase.initializeApp(config);
 
 var database = firebase.database(),
 	course = {
-		day = [];
-		tasks = [];
+		// day = [];
+		// tasks = [];
 	};
 
 database.ref().on("child_added", function(childSnapshot) {
@@ -23,7 +23,7 @@ database.ref().on("child_added", function(childSnapshot) {
     for (var i = 0; i < days.length; i++) {
     	$("#calendar").append("<div id='calendar-day-view'><p id='day' class='calendar-week-day'>" + day[i] 
     	+ "</p> <hr> <p class='calendar-week-task'>" + task[i] + "<p></div>"),
-    }
+    },
 
     $("#calendar").append("<div>Ay yaya</div>"),
 
@@ -36,7 +36,6 @@ database.ref().on("child_added", function(childSnapshot) {
 $("#day").on("click", function(event) {
 
 	$("#day-view").append("asgdlsjhdgs")
-
 
 
 });
