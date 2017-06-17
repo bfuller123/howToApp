@@ -36,6 +36,4 @@ database.ref().on("child_added", function(childSnapshot) {
 $("#day").on("click", function(event) {
 
 	$("#day-view").append("asgdlsjhdgs")
-
-
 });
