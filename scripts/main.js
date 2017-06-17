@@ -1,17 +1,13 @@
-var googleApi = {
-    key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
-    url: 'https://www.googleapis.com/books/v1/volumes?',
-    q: 'q=+subject:javascript+programming',
-    results: '&maxResults=2'
-};
+var keyword = null;
 
-$.ajax({
-    url: googleApi.url + googleApi.q + googleApi.results + googleApi.key,
-    method: 'GET'
-}).done(function(response) {
-    console.log(response);
-});
-
+function truncateString(str, num) {
+    if (num > str.length) {
+        return str;
+    } else {
+        str = str.substring(0, num);
+        return str + "...";
+    }
+}
 
 //Login Buttons
 $(".modal-close").on("click", function() {
@@ -24,8 +20,6 @@ $(".modal-background").on("click", function() {
 $("#loginButton").on("click", function() {
     $(".login").addClass("is-active");
 })
-
-
 
 //carousel from slick
 
