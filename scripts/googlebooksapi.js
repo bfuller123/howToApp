@@ -14,10 +14,10 @@ $(document).ready(function($) {
 
     var pageManipulation = {
         addAuthor: function(book, author) {
-            $("#"+book+"author").text(author);
+            $("#"+book+"Author").text(author);
         },
         addTitle: function(book, title) {
-            $("#"+book+"title").text(title);
+            $("#"+book+"Title").text(title);
         }
     }
 
@@ -29,8 +29,8 @@ $(document).ready(function($) {
       googleApi.bookOne.pages = response.items[0].volumeInfo.pageCount;
       googleApi.bookOne.title = response.items[0].volumeInfo.title;
       googleApi.bookOne.author = response.items[0].volumeInfo.authors[0];
-      pageManipulation.addAuthor(googleApi.bookOne.author);
-      pageManipulation.addTitle(googleApi.bookOne.title);
+      pageManipulation.addAuthor("bookOne", googleApi.bookOne.author);
+      pageManipulation.addTitle("bookOne", googleApi.bookOne.title);
     });
 });
 
