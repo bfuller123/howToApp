@@ -28,6 +28,9 @@ $(document).ready(function($) {
         },
         addTitle: function(book, title) {
             $("#"+book+"Title").text(title);
+        },
+        addImage: function(book, image) {
+            $("#"+book+"Image").find("img").attr('src', image);
         }
     };
 
@@ -38,16 +41,18 @@ $(document).ready(function($) {
       method: 'GET'
     }).done(function(response){
       console.log(response);
-      for (var i = 0; i < response.items.length; i++) {
+      for (let i = 0; i < response.items.length; i++) {
         var apiInfo = response.items[i].volumeInfo;
         var bookInfo = googleApi[books[i]];
           bookInfo.pages = apiInfo.pageCount;
           bookInfo.title = apiInfo.title;
           bookInfo.author = apiInfo.authors[0];
           bookInfo.description = apiInfo.description;
+        var truncatedTitle = truncateString(googleApi[books[i]].title, 35);
           bookInfo.image = apiInfo.imageLinks.smallThumbnail;
           pageManipulation.addAuthor(books[i], googleApi[books[i]].author);
-          pageManipulation.addTitle(books[i], googleApi[books[i]].title);
+          pageManipulation.addTitle(books[i], truncatedTitle);
+          pageManipulation.addImage(books[i], googleApi[books[i]].image);
         }
     });
 });
