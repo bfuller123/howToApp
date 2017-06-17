@@ -1,4 +1,3 @@
-
 var googleApi = {
     key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
     url: 'https://www.googleapis.com/books/v1/volumes?',
@@ -29,11 +28,10 @@ $("#loginButton").on("click", function() {
 
 
 //carousel from slick
+
 $('.autoplay').slick({
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
 });
-
-
