@@ -240,5 +240,15 @@ h4 {
 
 /*resource panel page*/
 
+#bookOne, #bookTwo {
+    overflow: auto;
+}
 
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
 

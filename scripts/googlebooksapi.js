@@ -30,7 +30,12 @@ $(document).ready(function($) {
             $("#"+book+"Title").text(title);
         },
         addImage: function(book, image) {
+            $("#"+book+"Image").find("img").css('height', '95%');
+            $("#"+book+"Image").find("img").css('width', '95%');
             $("#"+book+"Image").find("img").attr('src', image);
+        },
+        addDescription: function(book, description) {
+            $("#"+book+"Description").text(description);
         }
     };
 
@@ -49,10 +54,12 @@ $(document).ready(function($) {
           bookInfo.author = apiInfo.authors[0];
           bookInfo.description = apiInfo.description;
         var truncatedTitle = truncateString(googleApi[books[i]].title, 35);
+        var truncatedDescription = truncateString(googleApi[books[i]].description, 350);
           bookInfo.image = apiInfo.imageLinks.smallThumbnail;
           pageManipulation.addAuthor(books[i], googleApi[books[i]].author);
           pageManipulation.addTitle(books[i], truncatedTitle);
           pageManipulation.addImage(books[i], googleApi[books[i]].image);
+          pageManipulation.addDescription(books[i], truncatedDescription);
         }
     });
 });
