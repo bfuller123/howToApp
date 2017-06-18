@@ -4,7 +4,7 @@ $(document).ready(function($) {
     var googleApi = {
       key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
       url: 'https://www.googleapis.com/books/v1/volumes?',
-      q: 'q=+subject:javascript+programming',
+      q: 'q=javascript',
       results: '&maxResults=2',
       bookOne: {
         title: null,
@@ -64,7 +64,7 @@ $(document).ready(function($) {
           bookInfo.author = apiInfo.authors[0];
           bookInfo.description = apiInfo.description;
         var truncatedTitle = truncateString(googleApi[books[i]].title, 35);
-        var truncatedDescription = truncateString(googleApi[books[i]].description, 350);
+        var truncatedDescription = truncateString(googleApi[books[i]].description, 330);
           bookInfo.image = apiInfo.imageLinks.smallThumbnail;
           pageManipulation.addAuthor(books[i], googleApi[books[i]].author);
           pageManipulation.addTitle(books[i], truncatedTitle);
