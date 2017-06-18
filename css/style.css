@@ -248,7 +248,21 @@ h4 {
     float: left;
 }
 
-.float-right {
-    float: right;
+/*syllabus/calendar page*/
+
+#carousel-button-left,
+#carousel-button-right {
+    text-align: center;
+    padding: 100% 0 !important;
+    margin: 100% 0;
+}
+
+.calendar-card {
+    height: 300px !important;
+    width: 200px !important;
+    overflow-y: scroll;
+    background-color: white;
+    color:black;
+    margin:5px;
 }
 
