@@ -41,6 +41,16 @@ $(document).ready(function($) {
 
     var books = ['bookOne', 'bookTwo'];
 
+    var bookMath = new function(){
+        this.wordsPerPage = 500;
+        this.wordsPerMin = 220; //TODO: replace with userWPM(divided by 1.5 since technical?)
+        this.pagesPerHour = (this.wordsPerMin/this.wordsPerPage) * 60;
+        this.pagesPerDay = Math.ceil(this.pagesPerHour * 3); //TODO: replace three with the amount of hours user wants to spend each day studying
+        this.getDaysToRead = function(pages, hoursEachDay) {
+            return Math.ceil(pages/(hoursEachDay * bookMath.pagesPerHour));
+        };
+    };
+
     $.ajax({
       url: googleApi.url+googleApi.q+googleApi.results+googleApi.key,
       method: 'GET'
