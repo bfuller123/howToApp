@@ -29,3 +29,12 @@ $('.autoplay').slick({
     autoplay: true,
     autoplaySpeed: 2000,
 });
+
+$(document).ready(function() {
+    $('.calendar-carousel').slick({
+        slidesToShow: 7,
+        slidesToScroll: 7,
+        // infinite: false;
+        speed: 300,
+    });
+});
