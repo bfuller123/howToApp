@@ -248,6 +248,24 @@ h4 {
     float: left;
 }
 
+.float-left img {
+    min-width: 90px;
+    min-height: 128px;
+    max-width: 90px;
+    max-height: 128px;
+}
+
+.bookImageAndDescription {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookImageAndDescription p {
+    margin-left: 2%;
+}
+
+
 /*syllabus/calendar page*/
 
 #carousel-button-left,
