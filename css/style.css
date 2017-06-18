@@ -27,6 +27,10 @@ white: #ffffff
     height: 101.5vh;
 }
 
+.light-gray-background {
+    background-color: #BFC1C1;
+}
+
 .concrete-gray-background {
     background-color: #8D8F6F;
 }
@@ -48,7 +52,7 @@ white: #ffffff
 }
 
 .white-background {
-    background-color: #ffffff;
+    background-color: #F6FBFB;
 }
 
 .clear {
@@ -160,8 +164,18 @@ h4 {
     letter-spacing: 5px;
     float: left;
     color: #ffffff;
-    padding: 0.25% 2.5%;
+    padding: 0.25% 7%;
     margin-right: 1%;
+    height: 100%;
+}
+
+.nav {
+    border-top: solid #4EBE9F 4px;
+}
+
+.nav-item {
+    padding: 0 16%;
+    padding-bottom: 1%;
 }
 
 .search-nav,
@@ -169,7 +183,7 @@ h4 {
     outline: none;
     border: none;
     height: 100%;
-    width: 35%;
+    width: 100%;
     font-size: 120%;
 }
 
@@ -191,6 +205,10 @@ h4 {
     margin-right: .5%;
 }
 
+#loginButton {
+    font-size: 1.5rem;
+}
+
 .is-primary {
     background-color: #009085;
     color: #ffffff;
@@ -205,13 +223,6 @@ h4 {
 
 .carousel-container {
     padding-top: 2%;
-}
-
-#carousel-button-left,
-#carousel-button-right {
-    text-align: center;
-    padding: 100% 0 !important;
-    margin: 100% 0;
 }
 
 .card {
@@ -235,30 +246,60 @@ h4 {
 }
 
 
+/*home page*/
+
+.homeCalendarBox {
+    margin-top: 3%;
+    text-align: center;
+}
+
+
+/*anonymousConsole*/
+
+.anonymousIntro {
+    margin-top: 3%
+}
+
+
 /*index page*/
 
 
 /*resource panel page*/
 
+#bookOne,
+#bookTwo {
+    overflow: auto;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-left img {
+    min-width: 90px;
+    min-height: 128px;
+    max-width: 90px;
+    max-height: 128px;
+}
+
+.bookImageAndDescription {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookImageAndDescription p {
+    margin-left: 2%;
+}
+
 
 /*syllabus/calendar page*/
-
-#carousel-button-left,
-#carousel-button-right {
-    text-align: center;
-    padding: 100% 0 !important;
-    margin: 100% 0;
-}
 
 .calendar-card {
     height: 300px !important;
     width: 200px !important;
     overflow-y: scroll;
     background-color: white;
-    color:black;
-    margin:5px;
+    color: black;
+    margin: 5px;
 }
-
-
-
-

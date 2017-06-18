@@ -34,7 +34,7 @@ $(document).ready(function() {
     $('.calendar-carousel').slick({
         slidesToShow: 7,
         slidesToScroll: 7,
-        // infinite: false;
-        speed: 300,
+        // infinite: true;
+        // speed: 300,
     });
 });
