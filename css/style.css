@@ -240,6 +240,13 @@ h4 {
 
 /*resource panel page*/
 
+#bookOne, #bookTwo {
+    overflow: auto;
+}
+
+.float-left {
+    float: left;
+}
 
 /*syllabus/calendar page*/
 
@@ -258,7 +265,4 @@ h4 {
     color:black;
     margin:5px;
 }
-
-
-
 
