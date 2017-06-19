@@ -116,6 +116,7 @@ body {
   background: url('wood2.jpeg');
   background-size: 100%;
   height: 70vh;
+  min-height: 350px;
 }
 
 .page-break {
@@ -188,11 +189,12 @@ h4 {
   height: 100%;
   width: 100%;
   font-size: 120%;
+  margin-left: 0.4em;
 }
 
 .search-icon {
   border: 2px solid #7A7574;
-  padding: 1%;
+  padding: .75em;
   border-radius: 35%;
 }
 
@@ -247,7 +249,7 @@ h4 {
 
 .button {
   font-family: 'Share', cursive;
-  margin: 10px;
+  margin: 0 0.4em;
   border: none !important;
 }
 
