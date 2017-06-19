@@ -296,8 +296,8 @@ h4 {
 /*syllabus/calendar page*/
 
 .calendar-card {
-    height: 300px !important;
-    width: 200px !important;
+    height: 200px !important;
+    width: 150px !important;
     overflow-y: scroll;
     background-color: white;
     color: black;

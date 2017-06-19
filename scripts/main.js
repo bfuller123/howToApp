@@ -1,5 +1,4 @@
-// var keyword = "";
-
+//Truncate string function for books and newsapi
 function truncateString(str, num) {
     if (num > str.length) {
         return str;
@@ -21,15 +20,12 @@ $("#loginButton").on("click", function() {
     $(".login").addClass("is-active");
 })
 
-//on click to grab course which was clicked
+//On click to grab course which was clicked
 $(".card").on("click", function() {
     localStorage.setItem("keyword", $(this).data("keyword"));
-    // keyword = $(this).data("keyword");
-    // alert(keyword);
 });
 
-//carousel from slick
-
+//Carousel from slick
 $('.autoplay').slick({
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -37,13 +33,11 @@ $('.autoplay').slick({
     autoplaySpeed: 2000,
 });
 
-$(document).ready(function() {
-    $('.calendar-carousel').slick({
-        slidesToShow: 7,
-        slidesToScroll: 7,
-        infinite: true,
-        speed: 300,
-    });
+
+$('.calendar-carousel').slick({
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    accessibility: true,
+    arrows: true,
 });
-
-
