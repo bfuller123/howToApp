@@ -1,3 +1,32 @@
+//Variables
+
+var config = {
+    apiKey: "AIzaSyDp76QEn9bD6nuDv5SP_PvcQvImd_TIlMI",
+    authDomain: "howtoapp-1a3e2.firebaseapp.com",
+    databaseURL: "https://howtoapp-1a3e2.firebaseio.com",
+    projectId: "howtoapp-1a3e2",
+    storageBucket: "howtoapp-1a3e2.appspot.com",
+    messagingSenderId: "1005485618914"
+};
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+
+
+
+var name = "";
+var loginEmail = "";
+var loginPassword = "";
+
+
+
+
+
+
+
+
 //Truncate string function for books and newsapi
 function truncateString(str, num) {
     if (num > str.length) {
@@ -20,24 +49,30 @@ $("#loginButton").on("click", function() {
     $(".login").addClass("is-active");
 })
 
+//Grab user input Sign Up
+
+$(".signUpSubmit").on("click", function(event) {
+    event.preventDefault();
+    name = $(".nameInput").val().trim();
+    loginEmail = $(".emailInput").val().trim();
+    loginPassword = $(".passwordInput").val().trim();
+
+    database.ref().push({
+        name: name,
+        loginEmail: loginEmail,
+        loginPassword: loginPassword
+    });
+    window.location.href = "altPages/home.html";
+
+})
+
+
+
+
+
+
+
 //On click to grab course which was clicked
 $(".card").on("click", function() {
     localStorage.setItem("keyword", $(this).data("keyword"));
-});
-
-//Carousel from slick
-$('.autoplay').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-});
-
-
-$('.calendar-carousel').slick({
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    accessibility: true,
-    arrows: true,
 });
