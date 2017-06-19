@@ -113,9 +113,12 @@ body {
 }
 
 .wood-background {
-    background: url('wood2.jpeg');
-    background-size: 100%;
-    height: 70vh;
+
+  background: url('wood2.jpeg');
+  background-size: 100%;
+  height: 70vh;
+  min-height: 350px;
+
 }
 
 .page-break {
@@ -183,17 +186,21 @@ h4 {
 
 .search-nav,
 .search-nav:focus {
-    outline: none;
-    border: none;
-    height: 100%;
-    width: 100%;
-    font-size: 120%;
+
+  
+  outline: none;
+  border: none;
+  height: 100%;
+  width: 100%;
+  font-size: 120%;
+  margin-left: 0.4em;
 }
 
 .search-icon {
-    border: 2px solid #7A7574;
-    padding: 1%;
-    border-radius: 35%;
+  border: 2px solid #7A7574;
+  padding: .75em;
+  border-radius: 35%;
+
 }
 
 .button-nav {
@@ -246,9 +253,10 @@ h4 {
 }
 
 .button {
-    font-family: 'Share', cursive;
-    margin: 10px;
-    border: none !important;
+
+  font-family: 'Share', cursive;
+  margin: 0 0.4em;
+  border: none !important;
 }
 
 .topBar {
