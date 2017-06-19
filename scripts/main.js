@@ -29,25 +29,25 @@ var loginPassword = "";
 
 //Truncate string function for books and newsapi
 function truncateString(str, num) {
-    if (num > str.length) {
-        return str;
-    } else {
-        str = str.substring(0, num);
-        return str + "...";
-    }
+  if (num > str.length) {
+    return str;
+  } else {
+    str = str.substring(0, num);
+    return str + "...";
+  }
 }
 
 //Login Buttons
 $(".modal-close").on("click", function() {
-    $(".modal").removeClass("is-active");
-})
+  $(".modal").removeClass("is-active");
+});
 $(".modal-background").on("click", function() {
-    $(".modal").removeClass("is-active");
-})
+  $(".modal").removeClass("is-active");
+});
 
 $("#loginButton").on("click", function() {
-    $(".login").addClass("is-active");
-})
+  $(".login").addClass("is-active");
+});
 
 //Grab user input Sign Up
 
@@ -63,14 +63,7 @@ $(".signUpSubmit").on("click", function(event) {
         loginPassword: loginPassword
     });
     window.location.href = "altPages/home.html";
-
 })
-
-
-
-
-
-
 
 //On click to grab course which was clicked
 $(".card").on("click", function() {
