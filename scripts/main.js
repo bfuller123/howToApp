@@ -1,4 +1,4 @@
-var keyword = null;
+// var keyword = "";
 
 function truncateString(str, num) {
     if (num > str.length) {
@@ -21,6 +21,13 @@ $("#loginButton").on("click", function() {
     $(".login").addClass("is-active");
 })
 
+//on click to grab course which was clicked
+$(".card").on("click", function() {
+    localStorage.setItem("keyword", $(this).data("keyword"));
+    // keyword = $(this).data("keyword");
+    // alert(keyword);
+});
+
 //carousel from slick
 
 $('.autoplay').slick({
@@ -34,7 +41,9 @@ $(document).ready(function() {
     $('.calendar-carousel').slick({
         slidesToShow: 7,
         slidesToScroll: 7,
-        // infinite: true;
-        // speed: 300,
+        infinite: true,
+        speed: 300,
     });
 });
+
+
