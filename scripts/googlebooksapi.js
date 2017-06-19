@@ -4,7 +4,7 @@ $(document).ready(function($) {
     var googleApi = {
       key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
       url: 'https://www.googleapis.com/books/v1/volumes?',
-      q: 'q=cooking',
+      q: 'q=' + localStorage.getItem("keyword"),
       results: '&maxResults=2',
       bookOne: {
         title: null,
