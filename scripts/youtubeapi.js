@@ -15,3 +15,5 @@ $(document).ready(function() {
   });
 
 });
+
+localStorage.getItem("keyword")

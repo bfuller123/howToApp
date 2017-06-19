@@ -9,7 +9,7 @@ $.ajax({
         var newArticleDiv = $("<div class='content'>");
         var articleTitle = $("<a href='" + response.posts[i].url + " target='_blank'><p>").text(response.posts[i].title);
 
-        var truncatedText = truncateString(response.posts[i].text, 200)
+        var truncatedText = truncateString(response.posts[i].text, 250)
 
         var articleBlurb = $("<p>").text(truncatedText);
 
@@ -20,12 +20,3 @@ $.ajax({
     };
 
 });
-
-function truncateString(str, num) {
-    if (num > str.length) {
-        return str;
-    } else {
-        str = str.substring(0, num);
-        return str + "...";
-    }
-}
