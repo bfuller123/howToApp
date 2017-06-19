@@ -33,9 +33,10 @@
             <div class="nav-item">
                 <button type="button" id="loginButton" class='button mint-green-font white-background navButton'>Login</button>
             </div>
-            <div class="nav-item  signUp">
-                <button type="button" id="signUpButton" class='button mint-green-font white-background navButton'>Sign Up</button>
-            </div>
+            <!-- <div class="nav-item  signUp">
+    <button type="button" id="signUpButton" class='button mint-green-font white-background navButton'>Sign Up</button>
+</div>
+ -->
         </div>
         </div>
     </nav>
@@ -54,7 +55,7 @@
                             <h3 class="title is-3">Get Started</h3>
                     <div class="field">
                         <p class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Name">
+                            <input class="input nameInput" type="text" placeholder="Name">
                             <span class="icon is-small is-left">
                               <i class="fa fa-user-circle"></i>
                            </span>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="field">
                         <p class="control has-icons-left">
-                            <input class="input" type="email" placeholder="Email">
+                            <input class="input emailInput" type="email" placeholder="Email">
                             <span class="icon is-small is-left">
                               <i class="fa fa-envelope"></i>
                            </span>
@@ -70,7 +71,7 @@
                     </div>
                     <div class="field">
                         <p class="control has-icons-left">
-                            <input class="input" type="password" placeholder="Password">
+                            <input class="input passwordInput" type="password" placeholder="Password">
                             <span class="icon is-small is-left">
                               <i class="fa fa-lock"></i>
                             </span>
@@ -78,7 +79,7 @@
                     </div>
                     <div class="field">
                         <p class="control">
-                            <button class="button is-primary">
+                            <button class="button is-primary signUpSubmit">
                                 Sign Up
                             </button>
                         </p>
@@ -196,6 +197,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 <script src="../scripts/main.js" charset="utf-8"></script>
 <script src="../scripts/carousel.js" charset="utf-8"></script>
 
