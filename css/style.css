@@ -123,7 +123,7 @@ body {
 }
 
 .full-wood-background {
-    background-image: url('wood.jpg');
+    background-image: url('wood2.jpeg');
     background-size: 100%;
     background-repeat: none;
     height: 101.5vh;
@@ -174,8 +174,11 @@ h4 {
 }
 
 .nav-item {
-    padding: 0 16%;
-    padding-bottom: 1%;
+    padding: 0 0 1% 16%;
+}
+
+.signUp {
+    padding: 0 16% 1% 0;
 }
 
 .search-nav,
@@ -205,7 +208,7 @@ h4 {
     margin-right: .5%;
 }
 
-#loginButton {
+.navButton {
     font-size: 1.5rem;
 }
 
