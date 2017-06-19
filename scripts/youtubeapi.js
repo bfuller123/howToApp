@@ -7,3 +7,5 @@ $.ajax({
 }).done(function(response) {
   console.log(response);
 });
+
+localStorage.getItem("keyword")
