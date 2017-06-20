@@ -61,31 +61,76 @@ $("#loginButton").on("click", function() {
 $(".signUpSubmit").on("click", function(event) {
     event.preventDefault();
     name = $(".nameInput").val().trim();
-    loginEmail = $(".emailInput").val().trim();
-    loginPassword = $(".passwordInput").val().trim();
+    loginEmail = $(".emailInput").val();
+    loginPassword = $(".passwordInput").val();
 
-    database.ref().push({
-        name: name,
-        loginEmail: loginEmail,
-        loginPassword: loginPassword
+    firebase.auth().createUserWithEmailAndPassword(loginEmail, loginPassword).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        if (errorCode == 'auth/weak-password') {
+            alert('The password is too weak.');
+        } else {
+            alert(errorMessage);
+        }
+        console.log(error);
+        // ...
     });
 
-    loggedIn = true;
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            var user = firebase.auth().currentUser;
 
-    if (window.location.href == "index.html") {
-        window.location.href = "altPages/home.html";
-    } else {
-        window.location.href = "home.html";
-    }
+            user.updateProfile({
+                displayName: name
+            }).then(function() {
+                alert("Thank you for logging in " + name "!");
+            }, function(error) {
+                alert("There has been an error");
+            });
+            // User is signed in.
+            loggedIn = true;
+            if (window.location.href == "index.html") {
+                window.location.href = "altPages/home.html";
+            } else {
+                window.location.href = "home.html";
+            }
 
-})
+        } else {
+            // No user is signed in.
+            alert("You are not signed in.")
+        }
+    });
+
+
+});
+
+//Login button
+
+var user = firebase.auth().currentUser;
+
+if (user) {
+    // User is signed in.
+} else {
+    // No user is signed in.
+}
+
+
+
 
 //log out button
 $("#logOutButton").on("click", function(event) {
     loggedIn = false;
-    window.location.href = "anonymousConsole.html"
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        window.location.href = "anonymousConsole.html"
+    }).catch(function(error) {
+        // An error happened.
+        alert(error);
+    });
 
-})
+});
 
 //On click to grab course which was clicked
 $(".card").on("click", function() {
@@ -103,7 +148,7 @@ $("#create-course-link").on("click", function() {
         for (var j = 0; j < dayArray[i].length; j++) {
 
             if (dayArray[i][j].checked) {
-                
+
                 chosenDayArray.push(dayArray[i]);
                 // localStorage.setItem(dayArray[i], JSON.parse(chosenDayArray));
             };
