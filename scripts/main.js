@@ -12,19 +12,26 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
-
-
-
-
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
-
 var loggedIn;
 
+//vars for grabbing course data from resource panel
 
-
-
+var dayArray = [
+    monday = $("[name='mondayCheckbox']"),
+    tuesday = $("[name='tuesdayCheckbox']"),
+    wednesday = $("[name='wednesdayCheckbox']"),
+    thursday = $("[name='thursdayCheckbox']"),
+    friday = $("[name='fridayCheckbox']"),
+    saturday = $("[name='saturdayCheckbox']"),
+    sunday = $("[name='sundayCheckbox']")
+];
+var chosenDayArray = [];
+var weeks = "";
+var courseName = "";
+var days = "";
 
 
 //Truncate string function for books and newsapi
@@ -73,7 +80,6 @@ $(".signUpSubmit").on("click", function(event) {
 
 })
 
-
 //log out button
 $("#logOutButton").on("click", function(event) {
     loggedIn = false;
@@ -81,8 +87,34 @@ $("#logOutButton").on("click", function(event) {
 
 })
 
-
 //On click to grab course which was clicked
 $(".card").on("click", function() {
     localStorage.setItem("keyword", $(this).data("keyword"));
+});
+
+
+//On click to grab course data & day data
+$("#create-course-link").on("click", function() {
+
+    weeks = $("#amountOfHours").val();
+    courseName = localStorage.getItem("keyword");
+
+    for (var i = 0; i < dayArray.length; i++) {
+        for (var j = 0; j < dayArray[i].length; j++) {
+
+            if (dayArray[i][j].checked) {
+                
+                chosenDayArray.push(dayArray[i]);
+                // localStorage.setItem(dayArray[i], JSON.parse(chosenDayArray));
+            };
+        };
+    }
+
+    days = "lame";
+
+    database.ref().push({
+        courseName: courseName,
+        weeks: weeks,
+        days: days
+    });
 });
