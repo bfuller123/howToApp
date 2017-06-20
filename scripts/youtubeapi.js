@@ -14,11 +14,29 @@ $(document).ready(function() {
       method: "GET"
     })
     .done(function(response) {
+      console.log(response);
       for (var i = 0; i < response.items.length; i++) {
-        console.log(response.items[i]);
+        var videoDiv = $("<div>");
+        var channelTitle = $('<h2>').text(response.items[i].snippet.channelTitle);
+        var title = $("<h3>").text(response.items[i].snippet.title);
+        var videoFrameDiv = $('<div>');
+        videoFrameDiv.addClass('tile is-parent is-vertical');
+        // var vidBox = $('<div');// vidBox.addClass('box');
+
+        var videoFrame = $('<iframe>');
+        var videoUrl = 'https://www.youtube.com/embed/?v=';
+
+        videoFrame.attr("src", videoUrl + response.items[i].id.videoId);
+
+        videoFrameDiv.append(videoFrame);
+        videoDiv.append(channelTitle);
+        videoDiv.append(title);
+
+        $('#videoOutput').append(videoDiv);
+        $('#videoOutput').append(videoFrame);
       }
     });
 
 });
 
-localStorage.getItem("keyword");
+// localStorage.getItem("keyword");
