@@ -4,7 +4,7 @@ $(document).ready(function() {
     part: "?part=snippet",
     results: "&maxResults=3",
     type: "&type=video",
-    q: "&q=surfing",
+    q: "&q=" + localStorage.getItem('keyword'),
     videoEmbed: "&videoEmbeddable=true",
     key: "&key=AIzaSyBnboNloog0d2dSKXk9zaz7FIR_p8JTLl4"
   };
@@ -17,26 +17,24 @@ $(document).ready(function() {
       console.log(response);
       for (var i = 0; i < response.items.length; i++) {
         var videoDiv = $("<div>");
+        videoDiv.addClass('tile is-parent is-vertical');
         var channelTitle = $('<h2>').text(response.items[i].snippet.channelTitle);
         var title = $("<h3>").text(response.items[i].snippet.title);
         var videoFrameDiv = $('<div>');
-        videoFrameDiv.addClass('tile is-parent is-vertical');
-        // var vidBox = $('<div');// vidBox.addClass('box');
+        videoFrameDiv.addClass('box');
 
         var videoFrame = $('<iframe>');
         var videoUrl = 'https://www.youtube.com/embed/?v=';
 
         videoFrame.attr("src", videoUrl + response.items[i].id.videoId);
 
+        videoDiv.append(videoFrameDiv);
+        videoFrameDiv.append(channelTitle);
+        videoFrameDiv.append(title);
         videoFrameDiv.append(videoFrame);
-        videoDiv.append(channelTitle);
-        videoDiv.append(title);
 
         $('#videoOutput').append(videoDiv);
-        $('#videoOutput').append(videoFrame);
       }
     });
 
 });
-
-// localStorage.getItem("keyword");
