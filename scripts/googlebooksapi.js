@@ -1,5 +1,8 @@
 //TODO: make it so it only returns results with ratings of 4 or more
 
+var bookOneApi = null;
+var bookTwoApi = null;
+
 $(document).ready(function($) {
     var googleApi = {
       key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
@@ -70,5 +73,8 @@ $(document).ready(function($) {
           pageManipulation.addDescription(books[i], truncatedDescription);
         }
     });
+
+    bookOneApi = googleApi.bookOne;
+    bookTwoApi = googleApi.bookTwo;
 });
 

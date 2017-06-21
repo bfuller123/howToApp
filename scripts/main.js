@@ -20,18 +20,20 @@ var loggedIn;
 //vars for grabbing course data from resource panel
 
 var dayArray = [
-    monday = $("[name='mondayCheckbox']"),
-    tuesday = $("[name='tuesdayCheckbox']"),
-    wednesday = $("[name='wednesdayCheckbox']"),
-    thursday = $("[name='thursdayCheckbox']"),
-    friday = $("[name='fridayCheckbox']"),
-    saturday = $("[name='saturdayCheckbox']"),
-    sunday = $("[name='sundayCheckbox']")
+    monday = $("#mondayCheckbox"),
+    tuesday = $("#tuesdayCheckbox"),
+    wednesday = $("#wednesdayCheckbox"),
+    thursday = $("#thursdayCheckbox"),
+    friday = $("#fridayCheckbox"),
+    saturday = $("#saturdayCheckbox"),
+    sunday = $("#sundayCheckbox")
 ];
 var chosenDayArray = [];
 var weeks = "";
 var courseName = "";
 var days = "";
+var totalDays = "";
+var pagesPerDay = "";
 
 
 //Truncate string function for books and newsapi
@@ -83,12 +85,14 @@ $(".signUpSubmit").on("click", function(event) {
             var user = firebase.auth().currentUser;
 
             user.updateProfile({
+
                 displayName: name
             }).then(function() {
                 alert("Thank you for logging in " + name + "!");
             }, function(error) {
                 alert("There has been an error");
             });
+          
             // User is signed in.
             loggedIn = true;
             if (window.location.href == "index.html") {
@@ -102,7 +106,6 @@ $(".signUpSubmit").on("click", function(event) {
             alert("You are not signed in.")
         }
     });
-
 
 });
 
@@ -137,29 +140,37 @@ $(".card").on("click", function() {
     localStorage.setItem("keyword", $(this).data("keyword"));
 });
 
-
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
 
-    weeks = $("#amountOfHours").val();
+    console.log("Yo yo")
+
     courseName = localStorage.getItem("keyword");
+    weeks = $("#amountOfHours").val();
 
     for (var i = 0; i < dayArray.length; i++) {
         for (var j = 0; j < dayArray[i].length; j++) {
 
             if (dayArray[i][j].checked) {
 
-                chosenDayArray.push(dayArray[i]);
-                // localStorage.setItem(dayArray[i], JSON.parse(chosenDayArray));
+                chosenDayArray.push(dayArray[i].data("name"));
+                console.log(chosenDayArray);
             };
         };
     }
 
-    days = "lame";
+    days = chosenDayArray;
+    totalDays = (chosenDayArray.length * weeks);
 
     database.ref().push({
         courseName: courseName,
         weeks: weeks,
-        days: days
+        days: chosenDayArray,
+        totalDays: totalDays,
     });
 });
+
+// console.log(bookOneApi);
+
+
+
