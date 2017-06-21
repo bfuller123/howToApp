@@ -20,13 +20,13 @@ var loggedIn;
 //vars for grabbing course data from resource panel
 
 var dayArray = [
-    monday = $("[name='mondayCheckbox']"),
-    tuesday = $("[name='tuesdayCheckbox']"),
-    wednesday = $("[name='wednesdayCheckbox']"),
-    thursday = $("[name='thursdayCheckbox']"),
-    friday = $("[name='fridayCheckbox']"),
-    saturday = $("[name='saturdayCheckbox']"),
-    sunday = $("[name='sundayCheckbox']")
+    monday = $("#mondayCheckbox"),
+    tuesday = $("#tuesdayCheckbox"),
+    wednesday = $("#wednesdayCheckbox"),
+    thursday = $("#thursdayCheckbox"),
+    friday = $("#fridayCheckbox"),
+    saturday = $("#saturdayCheckbox"),
+    sunday = $("#sundayCheckbox")
 ];
 var chosenDayArray = [];
 var weeks = "";
@@ -83,12 +83,13 @@ $(".signUpSubmit").on("click", function(event) {
             var user = firebase.auth().currentUser;
 
             user.updateProfile({
-                displayName: name
-            }).then(function() {
-                alert("Thank you for logging in " + name "!");
-            }, function(error) {
-                alert("There has been an error");
-            });
+                    displayName: name
+                }).then(function() {
+                    alert("Thank you for logging in " + name + "!");
+                }),
+                function(error) {
+                    alert("There has been an error");
+                };
             // User is signed in.
             loggedIn = true;
             if (window.location.href == "index.html") {
@@ -102,7 +103,6 @@ $(".signUpSubmit").on("click", function(event) {
             alert("You are not signed in.")
         }
     });
-
 
 });
 
@@ -137,7 +137,6 @@ $(".card").on("click", function() {
     localStorage.setItem("keyword", $(this).data("keyword"));
 });
 
-
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
 
@@ -149,13 +148,13 @@ $("#create-course-link").on("click", function() {
 
             if (dayArray[i][j].checked) {
 
-                chosenDayArray.push(dayArray[i]);
-                // localStorage.setItem(dayArray[i], JSON.parse(chosenDayArray));
+                chosenDayArray.push(dayArray[i].data("name"));
+                console.log(chosenDayArray);
             };
         };
     }
 
-    days = "lame";
+    days = chosenDayArray;
 
     database.ref().push({
         courseName: courseName,
