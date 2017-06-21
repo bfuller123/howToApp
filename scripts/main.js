@@ -85,13 +85,14 @@ $(".signUpSubmit").on("click", function(event) {
             var user = firebase.auth().currentUser;
 
             user.updateProfile({
-                    displayName: name
-                }).then(function() {
-                    alert("Thank you for logging in " + name + "!");
-                }),
-                function(error) {
-                    alert("There has been an error");
-                };
+
+                displayName: name
+            }).then(function() {
+                alert("Thank you for logging in " + name + "!");
+            }, function(error) {
+                alert("There has been an error");
+            });
+          
             // User is signed in.
             loggedIn = true;
             if (window.location.href == "index.html") {

@@ -2,66 +2,66 @@
 <html>
 
 <head>
-  <title>How To</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" href="../css/tieBrand.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Megrim|Share|Unica+One" rel="stylesheet">
-  <script src="https://use.fontawesome.com/b07529a7cc.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <title>How To</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../css/tieBrand.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Megrim|Share|Unica+One" rel="stylesheet">
+    <script src="https://use.fontawesome.com/b07529a7cc.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 </head>
 
 <body style="background-image: none">
-  <nav class="nav white-background">
-    <div class="nav-left">
-      <a href="#" class="nav-item">
-        <h4 class='brand-nav mint-green-background'>How To...</h4>
-      </a>
-    </div>
-    <div class="nav-center">
-      <div class="nav-item  gray-font">
-        <span class='icon search-icon'><i class='fa fa-search gray-font'> </i></span>
-        <input type="text" class="search-nav white-background mint-green-font" placeholder="  Search Topics">
-      </div>
-    </div>
-    <div class="nav-right">
-      <div class="nav-item">
-        <button type="button" id="logOutButton" class='button mint-green-font white-background navButton'>Log Out</button>
-      </div>
-      <!--   <div class="nav-item">
+    <nav class="nav white-background">
+        <div class="nav-left">
+            <a href="#" class="nav-item">
+                <h4 class='brand-nav mint-green-background'>How To...</h4>
+            </a>
+        </div>
+        <div class="nav-center">
+            <div class="nav-item  gray-font">
+                <span class='icon search-icon'><i class='fa fa-search gray-font'> </i></span>
+                <input type="text" class="search-nav white-background mint-green-font" placeholder="  Search Topics">
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="nav-item">
+                <button type="button" id="logOutButton" class='button mint-green-font white-background navButton'>Log Out</button>
+            </div>
+            <!--   <div class="nav-item">
                   <button type="button" id="signUpButton" class='button mint-green-font white-background navButton'>Sign Up</button>
             </div> -->
-    </div>
-    </div>
-  </nav>
-  <!-- SideBar -->
-  <div class="columns is-marginless white-background">
-    <div class="column is-2">
-      <div class="menu">
-        <a></a>
-        <p class="menu-label">
-          Categories
-        </p>
-        <ul class="menu-list">
-          <a href="#articleContent">
-            <li>Test 1</li>
-          </a>
-          <a href="#bookOne">
-            <li>Test 2</li>
-          </a>
-          <a href="#bookTwo">
-            <li>Test 3</li>
-          </a>
-        </ul>
-        <hr>
-        <p class="menu-label">
-          Duration
-        </p>
-        <ul class="menu-list">
-          <li class="weekdayCheckbox">
+        </div>
+        </div>
+    </nav>
+    <!-- SideBar -->
+    <div class="columns is-marginless white-background">
+        <div class="column is-2">
+            <div class="menu">
+                <a></a>
+                <p class="menu-label">
+                    Categories
+                </p>
+                <ul class="menu-list">
+                    <a href="#articleContent">
+                        <li>Test 1</li>
+                    </a>
+                    <a href="#bookOne">
+                        <li>Test 2</li>
+                    </a>
+                    <a href="#bookTwo">
+                        <li>Test 3</li>
+                    </a>
+                </ul>
+                <hr>
+                <p class="menu-label">
+                    Duration
+                </p>
+                <ul class="menu-list">
+          <li class="weekdayCheckbox">  
             <input type="checkbox" id="mondayCheckbox" data-name="Monday">Monday</li>
           <li class="weekdayCheckbox">
             <input type="checkbox" id="tuesdayCheckbox" data-name="Tuesday">Tuesday</li>
@@ -76,66 +76,66 @@
           <li class="weekdayCheckbox">
             <input type="checkbox" id="sundayCheckbox" data-name="Sunday">Sunday</li>
         </ul>
-        <hr>
-        <ul>
-          <li class="amountOfHours">Weeks
-            <input type="text" id="amountOfHours">
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- Youtube resources -->
-    <div class="column is-10 is-marginless">
-      <div class="tile is-ancestor is-marginless">
-        <div id="videoOutput"></div>
-      </div>
-      <!-- Google Books resources -->
-      <div class="tile is-ancestor is-marginless">
-        <div class="column">
-          <div class="tile is-child notification is-warning" id="bookOne">
-            <p class="title" id="bookOneTitle">Title</p>
-            <p class="subtitle" id="bookOneAuthor">Author</p>
-            <div class="bookImageAndDescription">
-              <figure class="image is-128x128 float-left" id='bookOneImage'>
-                <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
-              </figure>
-              <p id="bookOneDescription"></p>
+                <hr>
+                <ul>
+                    <li class="amountOfHours">Weeks
+                        <input type="text" id="amountOfHours">
+                    </li>
+                </ul>
             </div>
-          </div>
         </div>
-        <div class="column">
-          <div class="tile is-child notification is-warning" id="bookTwo">
-            <p class="title" id="bookTwoTitle">Title</p>
-            <p class="subtitle" id="bookTwoAuthor">Author</p>
-            <div class="bookImageAndDescription">
-              <figure class="image is-128x128 float-left" id='bookTwoImage'>
-                <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
-              </figure>
-              <p id="bookTwoDescription"></p>
+        <!-- Youtube resources -->
+        <div class="column is-10 is-marginless">
+            <!-- <div class="columns"> -->
+            <div class="videoOutput columns"></div>
+            <!-- </div> -->
+            <!-- Google Books resources -->
+            <div class="tile is-ancestor is-marginless">
+                <div class="column">
+                    <div class="tile is-child notification is-warning" id="bookOne">
+                        <p class="title" id="bookOneTitle">Title</p>
+                        <p class="subtitle" id="bookOneAuthor">Author</p>
+                        <div class="bookImageAndDescription">
+                            <figure class="image is-128x128 float-left" id='bookOneImage'>
+                                <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+                            </figure>
+                            <p id="bookOneDescription"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="tile is-child notification is-warning" id="bookTwo">
+                        <p class="title" id="bookTwoTitle">Title</p>
+                        <p class="subtitle" id="bookTwoAuthor">Author</p>
+                        <div class="bookImageAndDescription">
+                            <figure class="image is-128x128 float-left" id='bookTwoImage'>
+                                <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+                            </figure>
+                            <p id="bookTwoDescription"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <!-- Articles resources  -->
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-info" id="articleContent">
+                    <p class="title">Article</p>
+                    <p class="subtitle"><a>Article link</a></p>
+                </article>
+            </div>
+            <!-- Create Course Button -->
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-primary">
+                    <a href="syllabusView.html" id='create-course-link'>
+                        <p class="title">Create Course</p>
+                    </a>
+                </article>
+            </div>
         </div>
-      </div>
-      <!-- Articles resources  -->
-      <div class="tile is-parent">
-        <article class="tile is-child notification is-info" id="articleContent">
-          <p class="title">Article</p>
-          <p class="subtitle"><a>Article link</a></p>
-        </article>
-      </div>
-      <!-- Create Course Button -->
-      <div class="tile is-parent is-vertical">
-        <article class="tile is-child notification is-primary">
-          <a href="syllabusview.html" id='create-course-link'>
-            <p class="title">Create Course</p>
-          </a>
-        </article>
-      </div>
     </div>
-  </div>
-  </div>
-  </div>
-  </div>
+    </div>
+    </div>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
