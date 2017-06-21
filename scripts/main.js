@@ -32,6 +32,8 @@ var chosenDayArray = [];
 var weeks = "";
 var courseName = "";
 var days = "";
+var totalDays = "";
+var pagesPerDay = "";
 
 
 //Truncate string function for books and newsapi
@@ -140,8 +142,10 @@ $(".card").on("click", function() {
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
 
-    weeks = $("#amountOfHours").val();
+    console.log("Yo yo")
+
     courseName = localStorage.getItem("keyword");
+    weeks = $("#amountOfHours").val();
 
     for (var i = 0; i < dayArray.length; i++) {
         for (var j = 0; j < dayArray[i].length; j++) {
@@ -155,10 +159,17 @@ $("#create-course-link").on("click", function() {
     }
 
     days = chosenDayArray;
+    totalDays = (chosenDayArray.length * weeks);
 
     database.ref().push({
         courseName: courseName,
         weeks: weeks,
-        days: days
+        days: chosenDayArray,
+        totalDays: totalDays,
     });
 });
+
+// console.log(bookOneApi);
+
+
+
