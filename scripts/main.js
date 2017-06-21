@@ -85,7 +85,7 @@ $(".signUpSubmit").on("click", function(event) {
             user.updateProfile({
                 displayName: name
             }).then(function() {
-                alert("Thank you for logging in " + name "!");
+                alert("Thank you for logging in " + name + "!");
             }, function(error) {
                 alert("There has been an error");
             });
