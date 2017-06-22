@@ -63,14 +63,21 @@ function createUser(user, username) {
 
 //retrieve user data on load and when updating their courses
 function getUserData(user) {
-    database.ref().child('users').child(user).on('child_added', function(snapshot){
+    database.ref().child('users').child(user).on('value', function(snapshot){
         userCourses = snapshot.val().courses;
+        console.log(userCourses);
     });
 }
 
-database.ref().child('users').child(user).on('value', function(snapshot){
-    userCourses = snapshot.val().courses;
-});
+function addItemToObject(object, item) {
+    let list = Object.keys(object);
+    let i = list.length - 1;
+    object[i] = item;
+}
+
+// database.ref().child('users').child(user).on('value', function(snapshot){
+//     userCourses = snapshot.val().courses;
+// });
 
 //Login Buttons
 $(".modal-close").on("click", function() {
@@ -109,7 +116,8 @@ $(".signUpSubmit").on("click", function(event) {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             user = user.uid;
-            createUser(user.uid, name);
+            createUser(user, name);
+            getUserData(user);
             // User is signed in.
             loggedIn = true;
             if (window.location.href == "index.html") {
@@ -170,7 +178,7 @@ $("#create-course-link").on("click", function() {
     totalDays = (chosenDayArray.length * weeks);
 
     database.ref().child('users').child(user).update({
-        courses:
+        courses: userCourses,
         [courseName]: {
             weeks: weeks,
             days: chosenDayArray,
