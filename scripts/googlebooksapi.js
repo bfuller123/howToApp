@@ -1,28 +1,21 @@
 //TODO: make it so it only returns results with ratings of 4 or more
 
 var bookOneApi = null;
-var bookTwoApi = null;
 
 $(document).ready(function($) {
     var googleApi = {
       key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
       url: 'https://www.googleapis.com/books/v1/volumes?',
       q: 'q=' + localStorage.getItem("keyword"),
-      results: '&maxResults=2',
+      results: '&maxResults=1',
       bookOne: {
         title: null,
         author: null,
         pages: 0,
         image: null,
-        description: null
+        description: null,
+        isbn: null
       },
-      bookTwo: {
-        title: null,
-        author: null,
-        pages: 0,
-        image: null,
-        description: null
-      }
     };
 
     var pageManipulation = {
@@ -40,7 +33,7 @@ $(document).ready(function($) {
         }
     };
 
-    var books = ['bookOne', 'bookTwo'];
+    var books = ['bookOne'];
 
     var bookMath = new function(){
         this.wordsPerPage = 500;
@@ -64,7 +57,8 @@ $(document).ready(function($) {
           bookInfo.title = apiInfo.title;
           bookInfo.author = apiInfo.authors[0];
           bookInfo.description = apiInfo.description;
-        var truncatedTitle = truncateString(googleApi[books[i]].title, 35);
+          bookInfo.isbn = apiInfo.industryIdentifiers[0].identifier;
+        var truncatedTitle = truncateString(googleApi[books[i]].title, 25);
         var truncatedDescription = truncateString(googleApi[books[i]].description, 300);
           bookInfo.image = apiInfo.imageLinks.smallThumbnail;
           pageManipulation.addAuthor(books[i], googleApi[books[i]].author);
@@ -75,6 +69,5 @@ $(document).ready(function($) {
     });
 
     bookOneApi = googleApi.bookOne;
-    bookTwoApi = googleApi.bookTwo;
 });
 
