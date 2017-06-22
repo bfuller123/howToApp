@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // var tag = document.createElement('script');
-  console.log(tag);
-  tag.src = "https://www.youtube.com/iframe_api";
+  // console.log(tag);
+  // tag.src = "https://www.youtube.com/iframe_api";
   // var firstScriptTag = document.getElementsByTagName('script')[0];
   console.log(firstScriptTag);
   // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
