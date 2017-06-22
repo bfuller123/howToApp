@@ -1,28 +1,23 @@
 //TODO: make it so it only returns results with ratings of 4 or more
 
 var bookOneApi = null;
-var bookTwoApi = null;
 
 $(document).ready(function($) {
     var googleApi = {
-        key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
-        url: 'https://www.googleapis.com/books/v1/volumes?',
-        q: 'q=' + localStorage.getItem("keyword"),
-        results: '&maxResults=1',
-        bookOne: {
-            title: null,
-            author: null,
-            pages: 0,
-            image: null,
-            description: null
-        },
-        // bookTwo: {
-        //   title: null,
-        //   author: null,
-        //   pages: 0,
-        //   image: null,
-        //   description: null
-        // }
+
+      key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
+      url: 'https://www.googleapis.com/books/v1/volumes?',
+      q: 'q=' + localStorage.getItem("keyword"),
+      results: '&maxResults=1',
+      bookOne: {
+        title: null,
+        author: null,
+        pages: 0,
+        image: null,
+        description: null,
+        isbn: null
+      }
+
     };
 
     var pageManipulation = {
@@ -40,7 +35,7 @@ $(document).ready(function($) {
         }
     };
 
-    var books = ['bookOne', 'bookTwo'];
+    var books = ['bookOne'];
 
     var bookMath = new function() {
         this.wordsPerPage = 500;
@@ -53,6 +48,7 @@ $(document).ready(function($) {
     };
 
     $.ajax({
+
         url: googleApi.url + googleApi.q + googleApi.results + googleApi.key,
         method: 'GET'
     }).done(function(response) {
@@ -71,9 +67,9 @@ $(document).ready(function($) {
             pageManipulation.addTitle(books[i], truncatedTitle);
             pageManipulation.addImage(books[i], googleApi[books[i]].image);
             pageManipulation.addDescription(books[i], truncatedDescription);
+
         }
     });
 
     bookOneApi = googleApi.bookOne;
-    bookTwoApi = googleApi.bookTwo;
 });
