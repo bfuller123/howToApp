@@ -52,7 +52,7 @@ function truncateString(str, num) {
 function createUser(user, username) {
     firebase.database().ref().child('users').child(user).update({
         name: username,
-        courses:{
+        courses: {
             0: 'Car Maintainence',
             1: 'Home Organization',
             2: 'Cooking',
@@ -119,6 +119,10 @@ $(".signUpSubmit").on("click", function(event) {
             createUser(user, name);
             getUserData(user);
             // User is signed in.
+            $('.nameInput').html('Name');
+            $('.emailInput').html('Email');
+            $('.passwordInput').html('Password');
+
             loggedIn = true;
             if (window.location.href == "index.html") {
                 window.location.href = "altPages/home.html";
