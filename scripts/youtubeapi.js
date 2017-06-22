@@ -64,8 +64,8 @@ $(document).ready(function() {
 
         videoFrame.attr({
           src: videoUrl + response.items[i].id.videoId + "?version=3",
-          width: 480,
-          height: 270,
+          width: 400,
+          height: 320,
           frameborder: 0
         });
 
