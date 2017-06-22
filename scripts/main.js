@@ -12,6 +12,7 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+var user = null;
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
@@ -34,6 +35,7 @@ var courseName = "";
 var days = "";
 var totalDays = "";
 var pagesPerDay = "";
+var userCourses = {};
 
 
 //Truncate string function for books and newsapi
@@ -50,7 +52,7 @@ function truncateString(str, num) {
 function createUser(user, username) {
     firebase.database().ref().child('users').child(user).update({
         name: username,
-        courses:{
+        courses: {
             0: 'Car Maintainence',
             1: 'Home Organization',
             2: 'Cooking',
@@ -58,6 +60,24 @@ function createUser(user, username) {
         }
     })
 };
+
+//retrieve user data on load and when updating their courses
+function getUserData(user) {
+    database.ref().child('users').child(user).on('value', function(snapshot){
+        userCourses = snapshot.val().courses;
+        console.log(userCourses);
+    });
+}
+
+function addItemToObject(object, item) {
+    let list = Object.keys(object);
+    let i = list.length - 1;
+    object[i] = item;
+}
+
+// database.ref().child('users').child(user).on('value', function(snapshot){
+//     userCourses = snapshot.val().courses;
+// });
 
 //Login Buttons
 $(".modal-close").on("click", function() {
@@ -95,8 +115,14 @@ $(".signUpSubmit").on("click", function(event) {
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            createUser(user.uid, name);
+            user = user.uid;
+            createUser(user, name);
+            getUserData(user);
             // User is signed in.
+            $('.nameInput').html('Name');
+            $('.emailInput').html('Email');
+            $('.passwordInput').html('Password');
+
             loggedIn = true;
             if (window.location.href == "index.html") {
                 window.location.href = "altPages/home.html";
@@ -105,6 +131,7 @@ $(".signUpSubmit").on("click", function(event) {
             }
 
         } else {
+            user = null;
             // No user is signed in.
             alert("You are not signed in.")
         }
@@ -137,9 +164,6 @@ $(".card").on("click", function() {
 
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
-
-    console.log("Yo yo")
-
     courseName = localStorage.getItem("keyword");
     weeks = $("#amountOfHours").val();
 
@@ -157,14 +181,17 @@ $("#create-course-link").on("click", function() {
     days = chosenDayArray;
     totalDays = (chosenDayArray.length * weeks);
 
-    database.ref().push({
-        courseName: courseName,
-        weeks: weeks,
-        days: chosenDayArray,
-        totalDays: totalDays,
+    database.ref().child('users').child(user).update({
+        courses: userCourses,
+        [courseName]: {
+            weeks: weeks,
+            days: chosenDayArray,
+            totalDays: totalDays,
+            bookTitle: bookOneApi.title,
+            bookAuthor: bookOneApi.author,
+            bookIsbn: bookOneApi.isbn
+        }
     });
 });
-
-// console.log(bookOneApi);
 
 
