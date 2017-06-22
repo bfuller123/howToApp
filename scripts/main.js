@@ -46,6 +46,19 @@ function truncateString(str, num) {
     }
 }
 
+//create user for firebase
+function createUser(user, username) {
+    firebase.database().ref().child('users').child(user).update({
+        name: username,
+        courses:{
+            0: 'Car Maintainence',
+            1: 'Home Organization',
+            2: 'Cooking',
+            3: 'Create a Resume'
+        }
+    })
+};
+
 //Login Buttons
 $(".modal-close").on("click", function() {
     $(".modal").removeClass("is-active");
@@ -82,17 +95,7 @@ $(".signUpSubmit").on("click", function(event) {
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            var user = firebase.auth().currentUser;
-
-            user.updateProfile({
-
-                displayName: name
-            }).then(function() {
-                alert("Thank you for logging in " + name + "!");
-            }, function(error) {
-                alert("There has been an error");
-            });
-          
+            createUser(user.uid, name);
             // User is signed in.
             loggedIn = true;
             if (window.location.href == "index.html") {
@@ -110,15 +113,7 @@ $(".signUpSubmit").on("click", function(event) {
 });
 
 //Login button
-
-var user = firebase.auth().currentUser;
-
-if (user) {
-    // User is signed in.
-} else {
-    // No user is signed in.
-}
-
+//need to add functionality to the login button
 
 
 
@@ -171,6 +166,5 @@ $("#create-course-link").on("click", function() {
 });
 
 // console.log(bookOneApi);
-
 
 
