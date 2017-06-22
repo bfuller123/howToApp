@@ -312,12 +312,12 @@ h4 {
 #player {
   width: 100%;
   padding: inherit;
+  text-align: center;
 }
 
 .box:not(:last-child) {
   margin-bottom: 0;
 }
-
 
 h6 {
   max-width: 90%;
