@@ -15,7 +15,8 @@ var user = null;
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
-var loggedIn = "";
+var loggedIn = false;
+
 
 //vars for grabbing course data from resource panel
 
@@ -79,7 +80,8 @@ function addItemToObject(object, item) {
 function signUserIn() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            user = user.uid;
+            // user = user.uid;
+            user = firebase.auth().currentUser.uid;
             createUser(user, name);
             getUserData(user);
             // User is signed in.
@@ -186,48 +188,51 @@ $(".category").on("click", function() {
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
 
-            user = firebase.auth().currentUser.uid;
+user = firebase.auth().currentUser.uid;
             courseName = localStorage.getItem("keyword");
             weeks = $("#amountOfHours").val();
 
+    for (var i = 0; i < dayArray.length; i++) {
+        for (var j = 0; j < dayArray[i].length; j++) {
 
-            for (var i = 0; i < dayArray.length; i++) {
-                for (var j = 0; j < dayArray[i].length; j++) {
+            if (dayArray[i][j].checked) {
 
-                    if (dayArray[i][j].checked) {
+                chosenDayArray.push(dayArray[i].data("name"));
+                console.log(chosenDayArray);
+            };
+        };
+    }
 
-                        chosenDayArray.push(dayArray[i].data("name"));
-                        console.log(chosenDayArray);
-                    }
-                }
+    days = chosenDayArray;
+    totalDays = (chosenDayArray.length * weeks);
 
 
-                days = chosenDayArray;
-                totalDays = (chosenDayArray.length * weeks);
 
-                // console.log(youtubeVideoOneApi.snippet.title);
 
-                database.ref().child('users').child(user).update({
-                    courses: userCourses,
-                    [courseName]: {
-                        weeks: weeks,
-                        days: chosenDayArray,
-                        totalDays: totalDays,
-                        bookTitle: bookOneApi.title,
-                        bookAuthor: bookOneApi.author,
-                        bookIsbn: bookOneApi.isbn,
-                        bookPages: booOneApi.pages,
-                        articleOneTitle: articleOneApi.title,
-                        articleOneUrl: articleOneApi.url,
-                        articleTwoTitle: articleTwoApi.title,
-                        articleTwoUrl: articleTwoApi.url,
-                        articleThreeTitle: articleThreeApi.title,
-                        articleThreeUrl: articleThreeApi.url,
-                        youtubeVideoOneTitle: youtubeVideoOneApi.snippet.title,
-                        youtubeVideoOneId: youtubeVideoOneApi.id.videoId,
-                        youtubeVideoTwoTitle: youtubeVideoTwoApi.snippet.title,
-                        youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
-                    }
-                });
 
-            });
+    // console.log(youtubeVideoOneApi.snippet.title);
+
+    database.ref().child('users').child(user).child('courses').update({
+        courses: userCourses,
+        [courseName]: {
+            weeks: weeks,
+            days: chosenDayArray,
+            totalDays: totalDays,
+            bookTitle: bookOneApi.title,
+            bookAuthor: bookOneApi.author,
+            bookIsbn: bookOneApi.isbn,
+            bookPages: bookOneApi.pages,
+            articleOneTitle: articleOneApi.title,
+            articleOneUrl: articleOneApi.url,
+            articleTwoTitle: articleTwoApi.title,
+            articleTwoUrl: articleTwoApi.url,
+            articleThreeTitle: articleThreeApi.title,
+            articleThreeUrl: articleThreeApi.url,
+            youtubeVideoOneTitle: youtubeVideoOneApi.snippet.title,
+            youtubeVideoOneId: youtubeVideoOneApi.id.videoId,
+            youtubeVideoTwoTitle: youtubeVideoTwoApi.snippet.title,
+            youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
+        }
+    });
+});
+

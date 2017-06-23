@@ -11,10 +11,9 @@ $.ajax({
     url: queryURL,
     method: "GET"
 }).done(function(response) {
-    console.log(response);
     for (var i = 0; i < response.posts.length; i++) {
         var newArticleDiv = $("<div class='content'>");
-        var articleTitle = $("<a href='" + response.posts[i].url + " target='_blank'><p>").text(response.posts[i].title);
+        var articleTitle = $("<a href='" + response.posts[i].url + "' target='_blank'><a>").text(response.posts[i].title);
 
         var truncatedText = truncateString(response.posts[i].text, 250);
 
