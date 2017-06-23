@@ -17,6 +17,7 @@ var loginEmail = "";
 var loginPassword = "";
 var loggedIn = false;
 
+
 //vars for grabbing course data from resource panel
 
 var dayArray = [
@@ -57,8 +58,8 @@ function createUser(user, username) {
             2: 'Cooking',
             3: 'Create a Resume'
         }
-    })
-};
+    });
+}
 
 //retrieve user data on load and when updating their courses
 function getUserData(user) {
@@ -69,9 +70,11 @@ function getUserData(user) {
 }
 
 function addItemToObject(object, item) {
+
     let list = Object.keys(object);
     let i = list.length;
     object[i] = item;
+
 }
 
 function signUserIn() {
@@ -97,7 +100,7 @@ function signUserIn() {
             user = null;
         }
     });
-};
+}
 
 // database.ref().child('users').child(user).on('value', function(snapshot){
 //     userCourses = snapshot.val().courses;
@@ -162,7 +165,7 @@ $("#logOutButton").on("click", function(event) {
     loggedIn = false;
     firebase.auth().signOut().then(function() {
         // Sign-out successful.
-        window.location.href = "anonymousConsole.html"
+        window.location.href = "anonymousConsole.html";
     }).catch(function(error) {
         // An error happened.
         alert(error);
@@ -184,9 +187,10 @@ $(".category").on("click", function() {
 
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
-    user = firebase.auth().currentUser.uid;
-    courseName = localStorage.getItem("keyword");
-    weeks = $("#amountOfHours").val();
+
+user = firebase.auth().currentUser.uid;
+            courseName = localStorage.getItem("keyword");
+            weeks = $("#amountOfHours").val();
 
     for (var i = 0; i < dayArray.length; i++) {
         for (var j = 0; j < dayArray[i].length; j++) {
@@ -232,4 +236,3 @@ $("#create-course-link").on("click", function() {
     });
 });
 
-THIS IS SO ANNOYING LET ME ADD A CHANGE SO I CAN MERGE AGAIN
