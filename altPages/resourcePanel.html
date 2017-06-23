@@ -29,10 +29,6 @@
             <div class="nav-item">
                 <button type="button" id="logOutButton" class='button mint-green-font white-background navButton'>Log Out</button>
             </div>
-            <!--   <div class="nav-item">
-                  <button type="button" id="signUpButton" class='button mint-green-font white-background navButton'>Sign Up</button>
-            </div> -->
-        </div>
         </div>
     </nav>
     <!-- SideBar -->
@@ -41,17 +37,23 @@
             <div class="menu">
                 <a></a>
                 <p class="menu-label">
-                    Categories
+                    Topics
                 </p>
                 <ul class="menu-list">
-                    <a href="#articleContent">
-                        <li>Cooking</li>
+                    <a href="#">
+                        <li class="category" data-keyword="Cooking">Cooking</li>
                     </a>
-                    <a href="#bookOne">
-                        <li>Test 2</li>
+                    <a href="#">
+                        <li class="category" data-keyword="Home Organization">Home Organization</li>
                     </a>
-                    <a href="#bookTwo">
-                        <li>Test 3</li>
+                    <a href="#">
+                        <li class="category" data-keyword="Car Maintanence">Car Maintanence</li>
+                    </a>
+                    <a href="#">
+                        <li class="category" data-keyword="Laundry">Laundry</li>
+                    </a>
+                    <a href="#">
+                        <li class="category" data-keyword="Interviewing">Interviewing</li>
                     </a>
                 </ul>
                 <hr>
@@ -85,15 +87,9 @@
         <!-- Youtube resources -->
         <div class="column is-ancestor is-10">
             <div class="tile is-parent">
-                <!-- <div class="column"> -->
                 <div class="is-child columns" id="player">
-                    <!-- <p class="title">YouTube</p> -->
-                    <!-- <p class="subtitle">Author</p> -->
-                    <!-- <iframe id="player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com&maxResults=3" frameborder="0"></iframe> -->
                 </div>
             </div>
-            <!-- </div> -->
-            <!-- </div> -->
             <!-- Google Books resources -->
             <div class="tile is-ancestor is-marginless">
                 <div class="column">
@@ -119,7 +115,7 @@
             <!-- Create Course Button -->
             <div class="tile is-parent is-vertical">
                 <article class="tile is-child notification is-primary">
-                    <a href="syllabusView.html" id='create-course-link'>
+                    <a href="#" id='create-course-link'>
                         <p class="title">Create Course</p>
                     </a>
                 </article>

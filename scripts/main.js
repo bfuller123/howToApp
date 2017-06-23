@@ -62,7 +62,7 @@ function createUser(user, username) {
 
 //retrieve user data on load and when updating their courses
 function getUserData(user) {
-    database.ref().child('users').child(user).on('value', function(snapshot){
+    database.ref().child('users').child(user).on('value', function(snapshot) {
         userCourses = snapshot.val().courses;
         console.log(userCourses);
     });
@@ -173,6 +173,13 @@ $(".card").on("click", function() {
     localStorage.setItem("keyword", $(this).data("keyword"));
 });
 
+
+//On click to grab course which was clicked on resourcepanel
+$(".category").on("click", function() {
+    localStorage.setItem("keyword", $(this).data("keyword"));
+    window.location.reload();
+});
+
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
     courseName = localStorage.getItem("keyword");
@@ -192,6 +199,9 @@ $("#create-course-link").on("click", function() {
     days = chosenDayArray;
     totalDays = (chosenDayArray.length * weeks);
 
+
+    console.log("Doo doo");
+
     database.ref().child('users').child(user).update({
         courses: userCourses,
         [courseName]: {
@@ -200,9 +210,13 @@ $("#create-course-link").on("click", function() {
             totalDays: totalDays,
             bookTitle: bookOneApi.title,
             bookAuthor: bookOneApi.author,
-            bookIsbn: bookOneApi.isbn
+            bookIsbn: bookOneApi.isbn,
+            articleOneTitle: articleOneApi.title,
+            articleOneUrl: articleOneApi.url,
+            articleTwoTitle: articleTwoApi.title,
+            articleTwoUrl: articleTwoApi.url,
+            articleThreeTitle: articleThreeApi.title,
+            articleThreeUrl: articleThreeApi.url
         }
     });
 });
-
-
