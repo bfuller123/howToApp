@@ -15,7 +15,7 @@ var user = null;
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
-var loggedIn = fase;
+var loggedIn = false;
 
 //vars for grabbing course data from resource panel
 
@@ -225,4 +225,25 @@ $("#create-course-link").on("click", function() {
             youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
         }
     });
+});
+
+
+
+//var
+var topics = ["cooking", "home organization", "car maintanence", "laundry", "interviewing"];
+var searchInput;
+
+//API 
+
+
+
+$(".search-button").on("click", function() {
+    searchInput = $('.search-nav').val().trim().toLowerCase();
+    console.log(searchInput);
+    // searchInput = $("search-nav").input.val().trim();
+    // if (loggedIn) {
+    //     if (topics.contains())
+    // } else {
+
+    // }
 });
