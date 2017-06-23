@@ -147,7 +147,7 @@ $('#modalLogin').on("click", function(event) {
     loginEmail = $('#modalEmail').val().trim();
     loginPassword = $('#modalPassword').val().trim();
     console.log(loginEmail, loginPassword, 'yeah!');
-    firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword).catch(function(error){
+    firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
     });
@@ -200,7 +200,7 @@ $("#create-course-link").on("click", function() {
     totalDays = (chosenDayArray.length * weeks);
 
 
-    console.log("Doo doo");
+    console.log(youtubeVideoOneApi.snippet.title);
 
     database.ref().child('users').child(user).update({
         courses: userCourses,
@@ -216,7 +216,12 @@ $("#create-course-link").on("click", function() {
             articleTwoTitle: articleTwoApi.title,
             articleTwoUrl: articleTwoApi.url,
             articleThreeTitle: articleThreeApi.title,
-            articleThreeUrl: articleThreeApi.url
+            articleThreeUrl: articleThreeApi.url,
+            youtubeVideoOneTitle: youtubeVideoOneApi.snippet.title,
+            youtubeVideoOneId: youtubeVideoOneApi.id.videoId,
+            youtubeVideoTwoTitle: youtubeVideoTwoApi.snippet.title,
+            youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
+
         }
     });
 });
