@@ -162,8 +162,11 @@ $(".card").on("click", function() {
     localStorage.setItem("keyword", $(this).data("keyword"));
 });
 
-$(".card").on("click", function() {
+
+//On click to grab course which was clicked on resourcepanel
+$(".category").on("click", function() {
     localStorage.setItem("keyword", $(this).data("keyword"));
+    window.location.reload();
 });
 
 //On click to grab course data & day data
