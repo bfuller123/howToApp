@@ -1,39 +1,48 @@
-var config = {
-    apiKey: "AIzaSyDp76QEn9bD6nuDv5SP_PvcQvImd_TIlMI",
-    authDomain: "howtoapp-1a3e2.firebaseapp.com",
-    databaseURL: "https://howtoapp-1a3e2.firebaseio.com",
-    projectId: "howtoapp-1a3e2",
-    storageBucket: "howtoapp-1a3e2.appspot.com",
-    messagingSenderId: "1005485618914"
-  };
+// console.log ("Yo")
+// console.log (userCourses);
 
-firebase.initializeApp(config);
+// function getUserData(user) {
+//     database.ref().child('users').child(user).on('value', function(snapshot) {
+//         userCourses = snapshot.val().courses;
+//         console.log(userCourses);
+//     });
+// }
 
-var database = firebase.database(),
-	course = {
-		// day = [];
-		// tasks = [];
-	};
+// var courses = "";
 
-database.ref().on("child_added", function(childSnapshot) {
+// database.ref().child('users').child(user).on('value', function(snapshot) {
+//     courses = snapshot.val();
+//         // userCourses = snapshot.val().courses;
+//         // console.log(userCourses);
+//     });
 
-    course.day = childSnapshot.val().course.day
-    course.tasks = childSnapshot.val().course.tasks
+// var user = firebase.auth().currentUser.uid;
 
-    for (var i = 0; i < days.length; i++) {
-    	$("#calendar").append("<div id='calendar-day-view'><p id='day' class='calendar-week-day'>" + day[i] 
-    	+ "</p> <hr> <p class='calendar-week-task'>" + task[i] + "<p></div>"),
-    },
+// getUserData(user)
 
-    $("#calendar").append("<div>Ay yaya</div>"),
+// database.ref().on("child_added", function(childSnapshot) {
 
-}, function(errorObject) {
+//     name = childSnapshot.val().name
+//     station = childSnapshot.val().station
+//     time = childSnapshot.val().time
+//     rate = childSnapshot.val().rate
 
-    console.log("Errors handled: " + errorObject.code);
+//     timeFunction(rate, time);
 
-});
+//     $(".table").append("<tr><td>" + childSnapshot.val().name + "</td>" + "<td>" + childSnapshot.val().station + "</td>" + "<td>" + childSnapshot.val().rate + "</td>" + "<td>" + arrival + "</td>" + "<td>" + minutesAway + "</td></tr>");
 
-$("#day").on("click", function(event) {
+// }, function(errorObject) {
 
-	$("#day-view").append("asgdlsjhdgs")
-});
+//     console.log("Errors handled: " + errorObject.code);
+
+// });
+
+// database.ref().child('users').child(user).on('value', function(snapshot) {})
+
+
+// function getUserData(user) {
+//     database.ref().child('users').child(user).on('value', function(snapshot) {
+//         userCourses = snapshot.val().courses;
+//         console.log(userCourses);
+//     });
+// }

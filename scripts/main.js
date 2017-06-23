@@ -77,7 +77,8 @@ function addItemToObject(object, item) {
 function signUserIn() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            user = user.uid;
+            // user = user.uid;
+            user = firebase.auth().currentUser.uid;
             createUser(user, name);
             getUserData(user);
             // User is signed in.
@@ -201,9 +202,13 @@ $("#create-course-link").on("click", function() {
     days = chosenDayArray;
     totalDays = (chosenDayArray.length * weeks);
 
+
+
+
+
     // console.log(youtubeVideoOneApi.snippet.title);
 
-    database.ref().child('users').child(user).update({
+    database.ref().child('users').child(user).child('courses').update({
         courses: userCourses,
         [courseName]: {
             weeks: weeks,
