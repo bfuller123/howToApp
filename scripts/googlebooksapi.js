@@ -7,7 +7,7 @@ $(document).ready(function($) {
 
       key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
       url: 'https://www.googleapis.com/books/v1/volumes?',
-      q: 'q=' + localStorage.getItem("keyword"),
+      q: 'q=how ' + localStorage.getItem("keyword"),
       results: '&maxResults=1',
       bookOne: {
         title: null,
