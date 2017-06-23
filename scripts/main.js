@@ -241,32 +241,26 @@ $("#create-course-link").on("click", function() {
 
 //var
 var topics = ["cooking", "home organization", "car maintanence", "laundry", "interviewing"];
-var userTopicButtons = [];
+var topicButtonsArray = [];
 var searchInput;
 
 //user specific topic buttons
 function renderButtons() {
 
 
-    $("#topics-view").empty();
+    searchInput = $('.search-nav').val().trim().toLowerCase();
 
-    // Looping through the array of movies
-    for (var i = 0; i < topics.length; i++) {
+    var a = $("<button>");
 
-        // Then dynamicaly generating buttons for each movie in the array
-        // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
-        var a = $("<button>");
-        // Adding a class of movie to our button
-        a.addClass("topic");
-        // Adding a data-attribute
-        a.attr("data-name", topics[i]);
-        // Providing the initial button text
-        a.text(topics[i]);
-        // Adding the button to the HTML
-        $("#topics-view").append(a);
-    }
+    a.attr("data-keyword", );
+    searchInput = searchInput.replace(/\s+/g, '-');
+
+    a.addClass(searchInput);
+
+    $(".user-topic-buttons-div").append(a);
+
 }
-//search button
+
 function search() {
     searchInput = $('.search-nav').val().trim().toLowerCase();
     console.log(searchInput);
@@ -282,7 +276,8 @@ function search() {
         console.log("no");
         if (loggedIn) {
             topics.push(searchInput);
-            userTopicButtons.push(searchInput);
+            topicButtons.push(searchInput);
+            renderButtons();
 
 
         } else {
