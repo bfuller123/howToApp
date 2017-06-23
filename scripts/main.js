@@ -69,9 +69,11 @@ function getUserData(user) {
 }
 
 function addItemToObject(object, item) {
-  let list = Object.keys(object);
-  let i = list.length - 1;
-  object[i] = item;
+
+    let list = Object.keys(object);
+    let i = list.length;
+    object[i] = item;
+
 }
 
 function signUserIn() {
@@ -183,8 +185,11 @@ $(".category").on("click", function() {
 
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
-  courseName = localStorage.getItem("keyword");
-  weeks = $("#amountOfHours").val();
+
+    user = firebase.auth().currentUser.uid;
+    courseName = localStorage.getItem("keyword");
+    weeks = $("#amountOfHours").val();
+
 
   for (var i = 0; i < dayArray.length; i++) {
     for (var j = 0; j < dayArray[i].length; j++) {
@@ -195,29 +200,34 @@ $("#create-course-link").on("click", function() {
         console.log(chosenDayArray);
       }
     }
-  }
-
-  days = chosenDayArray;
-  totalDays = (chosenDayArray.length * weeks);
 
 
-  console.log("Doo doo");
+    days = chosenDayArray;
+    totalDays = (chosenDayArray.length * weeks);
 
-  database.ref().child('users').child(user).update({
-    courses: userCourses,
-    [courseName]: {
-      weeks: weeks,
-      days: chosenDayArray,
-      totalDays: totalDays,
-      bookTitle: bookOneApi.title,
-      bookAuthor: bookOneApi.author,
-      bookIsbn: bookOneApi.isbn,
-      articleOneTitle: articleOneApi.title,
-      articleOneUrl: articleOneApi.url,
-      articleTwoTitle: articleTwoApi.title,
-      articleTwoUrl: articleTwoApi.url,
-      articleThreeTitle: articleThreeApi.title,
-      articleThreeUrl: articleThreeApi.url
-    }
-  });
+    // console.log(youtubeVideoOneApi.snippet.title);
+
+    database.ref().child('users').child(user).update({
+        courses: userCourses,
+        [courseName]: {
+            weeks: weeks,
+            days: chosenDayArray,
+            totalDays: totalDays,
+            bookTitle: bookOneApi.title,
+            bookAuthor: bookOneApi.author,
+            bookIsbn: bookOneApi.isbn,
+            bookPages: booOneApi.pages,
+            articleOneTitle: articleOneApi.title,
+            articleOneUrl: articleOneApi.url,
+            articleTwoTitle: articleTwoApi.title,
+            articleTwoUrl: articleTwoApi.url,
+            articleThreeTitle: articleThreeApi.title,
+            articleThreeUrl: articleThreeApi.url,
+            youtubeVideoOneTitle: youtubeVideoOneApi.snippet.title,
+            youtubeVideoOneId: youtubeVideoOneApi.id.videoId,
+            youtubeVideoTwoTitle: youtubeVideoTwoApi.snippet.title,
+            youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
+        }
+    });
+
 });
