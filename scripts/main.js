@@ -1,5 +1,4 @@
 //Variables
-
 var config = {
     apiKey: "AIzaSyDp76QEn9bD6nuDv5SP_PvcQvImd_TIlMI",
     authDomain: "howtoapp-1a3e2.firebaseapp.com",
@@ -75,6 +74,30 @@ function addItemToObject(object, item) {
     object[i] = item;
 }
 
+function signUserIn() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            user = user.uid;
+            createUser(user, name);
+            getUserData(user);
+            // User is signed in.
+            $('.nameInput').html('Name');
+            $('.emailInput').html('Email');
+            $('.passwordInput').html('Password');
+
+            loggedIn = true;
+            if (window.location.href == "index.html") {
+                window.location.href = "altPages/home.html";
+            } else {
+                window.location.href = "home.html";
+            }
+
+        } else {
+            user = null;
+        }
+    });
+};
+
 // database.ref().child('users').child(user).on('value', function(snapshot){
 //     userCourses = snapshot.val().courses;
 // });
@@ -113,35 +136,23 @@ $(".signUpSubmit").on("click", function(event) {
         // ...
     });
 
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            user = user.uid;
-            createUser(user, name);
-            getUserData(user);
-            // User is signed in.
-            $('.nameInput').html('Name');
-            $('.emailInput').html('Email');
-            $('.passwordInput').html('Password');
-
-            loggedIn = true;
-            if (window.location.href == "index.html") {
-                window.location.href = "altPages/home.html";
-            } else {
-                window.location.href = "home.html";
-            }
-
-        } else {
-            user = null;
-            // No user is signed in.
-            alert("You are not signed in.")
-        }
-    });
+    signUserIn();
 
 });
 
+
 //Login button
 //need to add functionality to the login button
-
+$('#modalLogin').on("click", function(event) {
+    loginEmail = $('#modalEmail').val().trim();
+    loginPassword = $('#modalPassword').val().trim();
+    console.log(loginEmail, loginPassword, 'yeah!');
+    firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword).catch(function(error){
+        var errorCode = error.code;
+        var errorMessage = error.message;
+    });
+    signUserIn();
+});
 
 
 //log out button
