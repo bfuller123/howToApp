@@ -70,7 +70,7 @@ function getUserData(user) {
 
 function addItemToObject(object, item) {
     let list = Object.keys(object);
-    let i = list.length - 1;
+    let i = list.length;
     object[i] = item;
 }
 
@@ -183,6 +183,7 @@ $(".category").on("click", function() {
 
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
+    user = firebase.auth().currentUser.uid;
     courseName = localStorage.getItem("keyword");
     weeks = $("#amountOfHours").val();
 
@@ -200,8 +201,7 @@ $("#create-course-link").on("click", function() {
     days = chosenDayArray;
     totalDays = (chosenDayArray.length * weeks);
 
-
-    console.log("Doo doo");
+    // console.log(youtubeVideoOneApi.snippet.title);
 
     database.ref().child('users').child(user).update({
         courses: userCourses,
@@ -212,12 +212,17 @@ $("#create-course-link").on("click", function() {
             bookTitle: bookOneApi.title,
             bookAuthor: bookOneApi.author,
             bookIsbn: bookOneApi.isbn,
+            bookPages: booOneApi.pages,
             articleOneTitle: articleOneApi.title,
             articleOneUrl: articleOneApi.url,
             articleTwoTitle: articleTwoApi.title,
             articleTwoUrl: articleTwoApi.url,
             articleThreeTitle: articleThreeApi.title,
-            articleThreeUrl: articleThreeApi.url
+            articleThreeUrl: articleThreeApi.url,
+            youtubeVideoOneTitle: youtubeVideoOneApi.snippet.title,
+            youtubeVideoOneId: youtubeVideoOneApi.id.videoId,
+            youtubeVideoTwoTitle: youtubeVideoTwoApi.snippet.title,
+            youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
         }
     });
 });
