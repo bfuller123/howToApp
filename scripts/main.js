@@ -241,8 +241,31 @@ $("#create-course-link").on("click", function() {
 
 //var
 var topics = ["cooking", "home organization", "car maintanence", "laundry", "interviewing"];
+var userTopicButtons = [];
 var searchInput;
 
+//user specific topic buttons
+function renderButtons() {
+
+
+    $("#topics-view").empty();
+
+    // Looping through the array of movies
+    for (var i = 0; i < topics.length; i++) {
+
+        // Then dynamicaly generating buttons for each movie in the array
+        // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
+        var a = $("<button>");
+        // Adding a class of movie to our button
+        a.addClass("topic");
+        // Adding a data-attribute
+        a.attr("data-name", topics[i]);
+        // Providing the initial button text
+        a.text(topics[i]);
+        // Adding the button to the HTML
+        $("#topics-view").append(a);
+    }
+}
 //search button
 function search() {
     searchInput = $('.search-nav').val().trim().toLowerCase();
@@ -252,21 +275,25 @@ function search() {
         searchInput = "." + searchInput;
         searchInput = searchInput.replace(/\s+/g, '-');
         localStorage.setItem("keyword", $(searchInput).data("keyword"));
-        window.location.href = "resourcePanel.html"
-
+        window.location.href = "resourcePanel.html";
 
 
     } else {
         console.log("no");
+        if (loggedIn) {
+            topics.push(searchInput);
+            userTopicButtons.push(searchInput);
+
+
+        } else {
+
+        }
+
+
     }
 }
 
 $(".search-button").on("click", function() {
     search();
-    // searchInput = $("search-nav").input.val().trim();
-    // if (loggedIn) {
-    //     if (topics.contains())
-    // } else {
 
-    // }
 });
