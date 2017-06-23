@@ -18,12 +18,13 @@ function getTopicImage() {
     })
 }
 
-$(".search-button").on("click", function() {
-    getTopicImage();
-    // searchInput = $("search-nav").input.val().trim();
-    // if (loggedIn) {
-    //     if (topics.contains())
-    // } else {
+$("search-button").on("click", function() {
+    var searchInput = $("search-nav").input.val().trim();
+    console.log(searchInput);
+    if (loggedIn) {
+        if (topics.contains())
+    } else {
+
 
     // }
 })
