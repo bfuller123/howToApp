@@ -17,7 +17,6 @@ var loginEmail = "";
 var loginPassword = "";
 var loggedIn = false;
 
-
 //vars for grabbing course data from resource panel
 
 var dayArray = [
@@ -234,5 +233,27 @@ user = firebase.auth().currentUser.uid;
             youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
         }
     });
+});
+
+
+
+
+//var
+var topics = ["cooking", "home organization", "car maintanence", "laundry", "interviewing"];
+var searchInput;
+
+//API 
+
+
+
+$(".search-button").on("click", function() {
+    searchInput = $('.search-nav').val().trim().toLowerCase();
+    console.log(searchInput);
+    // searchInput = $("search-nav").input.val().trim();
+    // if (loggedIn) {
+    //     if (topics.contains())
+    // } else {
+
+    // }
 });
 
