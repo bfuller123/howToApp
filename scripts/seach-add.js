@@ -1,7 +1,12 @@
 //var
 var topics = [];
 
-$("search-icon").on("click", function() {
+
+//API 
+
+
+
+$("search-button").on("click", function() {
     var searchInput = $("search-nav").input.val().trim();
     if (loggedIn) {
         if (topics.contains())
