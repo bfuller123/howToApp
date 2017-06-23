@@ -15,7 +15,7 @@ var user = null;
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
-var loggedIn = false;
+var loggedIn = true;
 
 //vars for grabbing course data from resource panel
 
@@ -276,7 +276,7 @@ function search() {
         console.log("no");
         if (loggedIn) {
             topics.push(searchInput);
-            topicButtons.push(searchInput);
+            topicButtonsArray.push(searchInput);
             renderButtons();
 
 
@@ -284,6 +284,10 @@ function search() {
 
         }
 
-
     }
 }
+
+$('.search-button').on("click", function() {
+    search();
+
+})
