@@ -231,3 +231,5 @@ $("#create-course-link").on("click", function() {
         }
     });
 });
+
+THIS IS SO ANNOYING LET ME ADD A CHANGE SO I CAN MERGE AGAIN
