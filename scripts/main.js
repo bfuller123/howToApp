@@ -15,7 +15,7 @@ var user = null;
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
-var loggedIn = fase;
+var loggedIn = false;
 
 //vars for grabbing course data from resource panel
 
@@ -212,7 +212,7 @@ $("#create-course-link").on("click", function() {
             bookTitle: bookOneApi.title,
             bookAuthor: bookOneApi.author,
             bookIsbn: bookOneApi.isbn,
-            bookPages: booOneApi.pages,
+            bookPages: bookOneApi.pages,
             articleOneTitle: articleOneApi.title,
             articleOneUrl: articleOneApi.url,
             articleTwoTitle: articleTwoApi.title,

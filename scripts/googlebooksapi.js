@@ -7,7 +7,7 @@ $(document).ready(function($) {
 
       key: '&key=AIzaSyA76jppPMnGusjyw9dKXXRKWUO4IBGoFFw',
       url: 'https://www.googleapis.com/books/v1/volumes?',
-      q: 'q=how ' + localStorage.getItem("keyword"),
+      q: 'q=how to ' + localStorage.getItem("keyword"),
       results: '&maxResults=1',
       bookOne: {
         title: null,
@@ -61,7 +61,10 @@ $(document).ready(function($) {
             bookInfo.author = apiInfo.authors[0];
             bookInfo.description = apiInfo.description;
             var truncatedTitle = truncateString(googleApi[books[i]].title, 35);
-            var truncatedDescription = truncateString(googleApi[books[i]].description, 300);
+            if (googleApi[books[i]].description) {
+                var truncatedDescription = truncateString(googleApi[books[i]].description, 300)
+            }
+
             bookInfo.image = apiInfo.imageLinks.smallThumbnail;
             pageManipulation.addAuthor(books[i], googleApi[books[i]].author);
             pageManipulation.addTitle(books[i], truncatedTitle);
