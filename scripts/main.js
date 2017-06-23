@@ -15,7 +15,7 @@ var user = null;
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
-var loggedIn;
+var loggedIn = fase;
 
 //vars for grabbing course data from resource panel
 
@@ -146,10 +146,11 @@ $(".signUpSubmit").on("click", function(event) {
 $('#modalLogin').on("click", function(event) {
     loginEmail = $('#modalEmail').val().trim();
     loginPassword = $('#modalPassword').val().trim();
-    console.log(loginEmail, loginPassword, 'yeah!');
+
     firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
+
     });
     signUserIn();
 });
