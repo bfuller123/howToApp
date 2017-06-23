@@ -39,7 +39,7 @@ $(document).ready(function() {
         part: "?part=snippet",
         results: "&maxResults=2",
         type: "&type=video",
-        q: "&q=" + localStorage.getItem('keyword'),
+        q: "&q=tutorial " + localStorage.getItem('keyword'),
         videoEmbed: "&videoEmbeddable=true",
         key: "&key=AIzaSyBnboNloog0d2dSKXk9zaz7FIR_p8JTLl4"
     };
