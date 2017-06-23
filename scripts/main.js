@@ -175,6 +175,7 @@ $("#logOutButton").on("click", function(event) {
 //On click to grab course which was clicked
 $(".card").on("click", function() {
     localStorage.setItem("keyword", $(this).data("keyword"));
+
 });
 
 
@@ -187,9 +188,9 @@ $(".category").on("click", function() {
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
 
-user = firebase.auth().currentUser.uid;
-            courseName = localStorage.getItem("keyword");
-            weeks = $("#amountOfHours").val();
+    user = firebase.auth().currentUser.uid;
+    courseName = localStorage.getItem("keyword");
+    weeks = $("#amountOfHours").val();
 
     for (var i = 0; i < dayArray.length; i++) {
         for (var j = 0; j < dayArray[i].length; j++) {
@@ -242,13 +243,26 @@ user = firebase.auth().currentUser.uid;
 var topics = ["cooking", "home organization", "car maintanence", "laundry", "interviewing"];
 var searchInput;
 
-//API 
-
-
-
-$(".search-button").on("click", function() {
+//search button
+function search() {
     searchInput = $('.search-nav').val().trim().toLowerCase();
     console.log(searchInput);
+    if (topics.includes(searchInput)) {
+
+        searchInput = "." + searchInput;
+        searchInput = searchInput.replace(/\s+/g, '-');
+        localStorage.setItem("keyword", $(searchInput).data("keyword"));
+        window.location.href = "resourcePanel.html"
+
+
+
+    } else {
+        console.log("no");
+    }
+}
+
+$(".search-button").on("click", function() {
+    search();
     // searchInput = $("search-nav").input.val().trim();
     // if (loggedIn) {
     //     if (topics.contains())
@@ -256,4 +270,3 @@ $(".search-button").on("click", function() {
 
     // }
 });
-
