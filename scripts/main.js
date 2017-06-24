@@ -36,13 +36,13 @@ var totalDays = "";
 var pagesPerDay = "";
 var userCourses = {};
 
-function hideNavButtons(){
-    if (loggedIn === false){
-        $('#logOutButton').hide();
-    }
-}
+// function hideNavButtons(){
+//     if (loggedIn === false){
+//         $('#logOutButton').hide();
+//     }
+// }
 
-hideNavButtons();
+// hideNavButtons();
 
 //Truncate string function for books and newsapi
 function truncateString(str, num) {
@@ -83,6 +83,14 @@ function addItemToObject(object, item) {
 
 }
 
+function changeElementText(item, newText) {
+  $(item).text(newText);
+}
+
+function changeElementID(item, newID) {
+  $(item).attr('id', newID);
+}
+
 function signUserIn() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -94,9 +102,11 @@ function signUserIn() {
             $('.nameInput').html('Name');
             $('.emailInput').html('Email');
             $('.passwordInput').html('Password');
-
+            changeElementText('#loginButton', 'Log Out');
+            changeElementID('#loginButton', 'logOutButton');
             loggedIn = true;
-            if (window.location.href == "index.html") {
+
+            if (window.location.pathname == "index.html" || "/howToApp/") {
                 window.location.href = "altPages/home.html";
             } else {
                 window.location.href = "home.html";
@@ -104,6 +114,8 @@ function signUserIn() {
 
         } else {
             user = null;
+            changeElementText('#logOutButton', 'Login');
+            changeElementID('#logOutButton', 'loginButton');
         }
     });
 }
@@ -123,6 +135,16 @@ $(".modal-background").on("click", function() {
 $("#loginButton").on("click", function() {
     $(".login").addClass("is-active");
 });
+
+// window.onload = function() {
+//   if (firebase.auth().currentUser != null) {
+//     changeElementText('#loginButton', 'Log Out');
+//     changeElementID('#loginButton', 'logOutButton');
+//   } else {
+//     changeElementText('#logOutButton', 'Login');
+//     changeElementID('#logOutButton', 'loginButton');
+//   }
+// }
 
 //Grab user input Sign Up
 
@@ -160,12 +182,19 @@ $('#modalLogin').on("click", function(event) {
     firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
+        $('#loginErrorMessage').text(errorMessage)
 
     });
+<<<<<<< HEAD
 
 
 
     signUserIn();
+=======
+    if (firebase.auth().currentUser != null){
+      signUserIn();
+    }
+>>>>>>> b0e56ff7fa1c37336a0331a9b4de7321c6e1ec16
 });
 
 
