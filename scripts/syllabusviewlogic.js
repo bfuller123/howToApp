@@ -8,7 +8,7 @@ function toTitleCase(str) {
 
 function minutesOfReading(pagesPerDay) {
     var rate = (500 / 220);
-    return Math.floor(pagesPerDay / rate);
+    return Math.floor(pagesPerDay * rate);
 }
 
 function pullFromFirebase(user) {
