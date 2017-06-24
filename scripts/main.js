@@ -352,3 +352,33 @@ $(".user-topic-buttons-div").on("click", ".userButton", function() {
     window.location.href = "resourcePanel.html";
 
 });
+
+//function to add pages to read each day to the book div on resource panel
+$('#amountOfHours').blur(function() {
+    checkDaysChecked();
+    amountOfDays = chosenDayArray.length;
+    weeks = $('#amountOfHours').val().trim();
+    totalDays = amountOfDays * weeks;
+    pagesPerDay = Math.ceil(bookOneApi.pages/totalDays);
+    $('#timeToRead').text('You will have to read around ' + pagesPerDay + ' pages every day of studying.');
+});
+
+$('.weekdayCheckbox').on('click', function() {
+  if(weeks != ''){
+    checkDaysChecked();
+    amountOfDays = chosenDayArray.length;
+    weeks = $('#amountOfHours').val().trim();
+    totalDays = amountOfDays * weeks;
+    pagesPerDay = Math.ceil(bookOneApi.pages/totalDays);
+    $('#timeToRead').text('You will have to read around ' + pagesPerDay + ' pages every day of studying.');
+  }
+});
+
+function checkDaysChecked() {
+  chosenDayArray = [];
+  dayArray.forEach(function(dayOfWeek) {
+    if($(dayOfWeek).is(':checked')){
+      chosenDayArray.push(dayOfWeek);
+    }
+  });
+};

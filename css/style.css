@@ -87,7 +87,7 @@ white: #ffffff
 }
 
 .white-font {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 
@@ -284,6 +284,11 @@ h4 {
 #bookOne,
 #bookTwo {
     overflow: auto;
+}
+
+#timeToRead {
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 .float-left {
