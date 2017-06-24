@@ -1,66 +1,54 @@
 var user = localStorage.getItem("user");
 
-// firebase.auth().onAuthStateChanged(function(user) {
-//         if (user) {
-//             user = firebase.auth().currentUser.uid;
-//         } else {
-//             user = null;
-//         }
-//     });
-
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
 
 function pullFromFirebase(user) {
     database.ref().child('users').child(user).on('value', function(snapshot) {
         var userCourses = snapshot.val().courses;
 
-        // userCourses .0
-        // userCourses[0]
-        // userCourses['0']
+        for (var i in userCourses) {
+            var newDiv = $('<div class="tile is-parent is-vertical">');
+            var newArticle = $('<article class="tile is-child notification is-warning">');
 
-        // for (var i = 0; i < userCourses.length; i++) {
+            newArticle.append('<p class=title>' + userCourses[i].name + ' Course Schedule');
 
-        // }
+            var SlickOuterDiv = $('<div class="slick-outer-div">');
 
-        // for (var prop in userCourses) {
-        //     console.log(`userCourses.${prop} = ${userCourses[prop]}`);
-        // }
+            for (var j = 0; j < userCourses[i].days.length; j++) {
+                SlickOuterDiv.append('<div>' + userCourses[i].days[j] + '</div>');
+            }
 
-        // $("#your-courses").append(userCourses[0].articleOneTitle);
+            newArticle.append(SlickOuterDiv);
 
-        console.log(userCourses[0]);
+            newDiv.append(newArticle);
+            $("#course-schedule-goes-here").append(newDiv);
 
-        // console.log(snapshot.val().courses);
+
+
+
+
+
+
+            // console.log(`userCourses.${i} = ${userCourses[i]}`);
+            // console.log(userCourses[i].bookPages);
+
+            // var capitalizedBookTitle = toTitleCase(userCourses[i].bookTitle);
+
+            // var newDiv = $('<div class="course-data-div">')
+            // var pagesPerDay = Math.floor((userCourses[i].bookPages) / (userCourses[i].totalDays));
+
+            // newDiv.append('<h4>' + userCourses[i].name + '</h4>');
+            // newDiv.append('<p> Read ' + pagesPerDay + ' pages per day of <span class="underline">' + capitalizedBookTitle + '</span> every ' + userCourses[i].days + ' for the next ' + userCourses[i].weeks + ' weeks.')
+            // newDiv.append('<h5>Your task list:</h5>');
+            // // newDiv.append('<h6>')
+
+            // $("#your-courses").append(newDiv);
+        }
     })
 };
 
 pullFromFirebase(user);
-
-
-// var courses = "";
-
-// database.ref().on("child_added", function(childSnapshot) {
-
-//     name = childSnapshot.val().name
-//     station = childSnapshot.val().station
-//     time = childSnapshot.val().time
-//     rate = childSnapshot.val().rate
-
-//     timeFunction(rate, time);
-
-//     $(".table").append("<tr><td>" + childSnapshot.val().name + "</td>" + "<td>" + childSnapshot.val().station + "</td>" + "<td>" + childSnapshot.val().rate + "</td>" + "<td>" + arrival + "</td>" + "<td>" + minutesAway + "</td></tr>");
-
-// }, function(errorObject) {
-
-//     console.log("Errors handled: " + errorObject.code);
-
-// });
-
-// database.ref().child('users').child(user).on('value', function(snapshot) {})
-
-
-// function getUserData(user) {
-//     database.ref().child('users').child(user).on('value', function(snapshot) {
-//         userCourses = snapshot.val().courses;
-//         console.log(userCourses);
-//     });
-// }

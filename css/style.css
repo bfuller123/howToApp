@@ -338,4 +338,12 @@ h6 {
     margin: 5px;
 }
 
-//
+.course-data-div {
+    background-color: grey;
+    padding:5px;
+    margin:5px;
+}
+
+.underline {
+    text-decoration: underline;
+}
