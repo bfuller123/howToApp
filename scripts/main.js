@@ -244,6 +244,8 @@ $(".category").on("click", function() {
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
 
+    chosenDayArray = [];
+
     user = firebase.auth().currentUser.uid;
     courseName = toTitleCase(localStorage.getItem("keyword"));
     weeks = $("#amountOfHours").val();
