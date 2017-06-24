@@ -235,15 +235,14 @@ $("#create-course-link").on("click", function() {
             bookAuthor: bookOneApi.author,
             bookIsbn: bookOneApi.isbn,
             bookPages: bookOneApi.pages,
+            bookImg: bookOneApi.image,
             articleOneTitle: articleOneApi.title,
             articleOneUrl: articleOneApi.url,
             articleTwoTitle: articleTwoApi.title,
             articleTwoUrl: articleTwoApi.url,
             articleThreeTitle: articleThreeApi.title,
             articleThreeUrl: articleThreeApi.url,
-            youtubeVideoOneTitle: youtubeVideoOneApi.snippet.title,
             youtubeVideoOneId: youtubeVideoOneApi.id.videoId,
-            youtubeVideoTwoTitle: youtubeVideoTwoApi.snippet.title,
             youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
         }
     });
