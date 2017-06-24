@@ -17,12 +17,13 @@ function pullFromFirebase(user) {
 
         for (var i in userCourses) {
             var capitalizedBookTitle = toTitleCase(userCourses[i].bookTitle);
+            var capitalizedCourseName = toTitleCase(userCourses[i].name);
             var pagesPerDay = Math.floor((userCourses[i].bookPages) / (userCourses[i].totalDays));
             var newDiv = $('<div class="tile is-parent is-vertical">');
             var newArticle = $('<article class="tile is-child notification is-warning">')
             var newColumnMama = $('<div class="columns">');
 
-            newArticle.append('<p class="title">' + userCourses[i].name + ' Course Schedule');
+            newArticle.append('<p class="title">' + capitalizedCourseName + ' Course Schedule');
             newArticle.append('<p class="subtitle"> You will complete this course in ' + userCourses[i].weeks + ' week(s) by following this weekly schedule</p>')
 
             var newColumn1 = $('<div class="column is-half">');
