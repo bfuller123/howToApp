@@ -11,21 +11,31 @@ function pullFromFirebase(user) {
         var userCourses = snapshot.val().courses;
 
         for (var i in userCourses) {
+            var capitalizedBookTitle = toTitleCase(userCourses[i].bookTitle);
+            var pagesPerDay = Math.floor((userCourses[i].bookPages) / (userCourses[i].totalDays));
             var newDiv = $('<div class="tile is-parent is-vertical">');
-            var newArticle = $('<article class="tile is-child notification is-warning">');
+            var newArticle = $('<article class="tile is-child notification is-warning"><div class="columns">');
 
-            newArticle.append('<p class=title>' + userCourses[i].name + ' Course Schedule');
+            newArticle.append('<p class="title">' + userCourses[i].name + ' Course Schedule');
+            newArticle.append('<p class="subtitle"> You will complete this course in ' + userCourses[i].weeks + ' week(s) by following this weekly schedule</p>')
 
+            var newColumn = $('<div class="column is-6">');
             var SlickOuterDiv = $('<div class="slick-outer-div">');
 
             for (var j = 0; j < userCourses[i].days.length; j++) {
-                SlickOuterDiv.append('<div>' + userCourses[i].days[j] + '</div>');
-            }
+                SlickOuterDiv.append('<div class="card"><header class="card-header"><p class="card-header-title">' + userCourses[i].days[j] + '</p></header><div class="card-content"><div class="content"><p> Read ' + pagesPerDay + ' pages per day of <span class="underline">' + capitalizedBookTitle + '</span></div></div>');
+            };
 
-            newArticle.append(SlickOuterDiv);
+            newColumn.append(SlickOuterDiv);
 
+
+            newArticle.append(newColumn);
             newDiv.append(newArticle);
             $("#course-schedule-goes-here").append(newDiv);
+
+
+
+
 
 
 
@@ -36,10 +46,10 @@ function pullFromFirebase(user) {
             // console.log(`userCourses.${i} = ${userCourses[i]}`);
             // console.log(userCourses[i].bookPages);
 
-            // var capitalizedBookTitle = toTitleCase(userCourses[i].bookTitle);
+
 
             // var newDiv = $('<div class="course-data-div">')
-            // var pagesPerDay = Math.floor((userCourses[i].bookPages) / (userCourses[i].totalDays));
+
 
             // newDiv.append('<h4>' + userCourses[i].name + '</h4>');
             // newDiv.append('<p> Read ' + pagesPerDay + ' pages per day of <span class="underline">' + capitalizedBookTitle + '</span> every ' + userCourses[i].days + ' for the next ' + userCourses[i].weeks + ' weeks.')

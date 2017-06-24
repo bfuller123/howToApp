@@ -240,7 +240,7 @@ h4 {
     margin: 100% 0;
 }
 
-.card {
+.card-main {
     height: 500px !important;
     width: 300px !important;
     margin: 0 1%;
@@ -329,14 +329,14 @@ h6 {
 
 /*syllabus/calendar page*/
 
-.calendar-card {
+/*.calendar-card {
     height: 200px !important;
     width: 150px !important;
     overflow-y: scroll;
     background-color: white;
     color: black;
     margin: 5px;
-}
+}*/
 
 .course-data-div {
     background-color: grey;
