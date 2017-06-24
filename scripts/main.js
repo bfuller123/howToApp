@@ -15,7 +15,7 @@ var user = null;
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
-var loggedIn = true;
+var loggedIn = false;
 
 //vars for grabbing course data from resource panel
 
@@ -35,6 +35,7 @@ var days = "";
 var totalDays = "";
 var pagesPerDay = "";
 var userCourses = {};
+
 
 
 //Truncate string function for books and newsapi
@@ -78,6 +79,14 @@ function addItemToObject(object, item) {
 
 }
 
+function changeElementText(item, newText) {
+    $(item).text(newText);
+}
+
+function changeElementID(item, newID) {
+    $(item).attr('id', newID);
+}
+
 function signUserIn() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -91,16 +100,22 @@ function signUserIn() {
             $('.nameInput').html('Name');
             $('.emailInput').html('Email');
             $('.passwordInput').html('Password');
-
+            changeElementText('#loginButton', 'Log Out');
+            changeElementID('#loginButton', 'logOutButton');
             loggedIn = true;
-            if (window.location.href == "index.html") {
-                window.location.href = "altPages/home.html";
-            } else {
+
+
+            if (location.href.endsWith('anonymousConsole.html')) {
                 window.location.href = "home.html";
+            } else if (location.href.endsWith('index.html') == true || window.location.href == "https://bfuller123.github.io/howToApp/") {
+                window.location.href = "altPages/home.html";
             }
+
 
         } else {
             user = null;
+            changeElementText('#logOutButton', 'Login');
+            changeElementID('#logOutButton', 'loginButton');
         }
     });
 }
@@ -124,6 +139,16 @@ $(".modal-background").on("click", function() {
 $("#loginButton").on("click", function() {
     $(".login").addClass("is-active");
 });
+
+window.onload = function() {
+    if (firebase.auth().currentUser != null) {
+        changeElementText('#loginButton', 'Log Out');
+        changeElementID('#loginButton', 'logOutButton');
+    } else {
+        changeElementText('#logOutButton', 'Login');
+        changeElementID('#logOutButton', 'loginButton');
+    }
+};
 
 //Grab user input Sign Up
 
@@ -161,9 +186,12 @@ $('#modalLogin').on("click", function(event) {
     firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
+        $('#loginErrorMessage').text(errorMessage);
 
     });
-    signUserIn();
+    if (firebase.auth().currentUser != null) {
+        signUserIn();
+    }
 });
 
 
@@ -179,6 +207,19 @@ $("#logOutButton").on("click", function(event) {
     });
 
 });
+
+function userLoggedIn() {
+    var searchNav = $('.gray-font');
+    if (loggedIn == true) {
+        console.log("im here!!");
+        // $('#logOutButton').hide();
+        $(".nav-right").append(searchNav);
+
+    }
+}
+
+userLoggedIn();
+
 
 //On click to grab course which was clicked
 $(".card").on("click", function() {
@@ -207,8 +248,8 @@ $("#create-course-link").on("click", function() {
 
                 chosenDayArray.push(dayArray[i].data("name"));
                 console.log(chosenDayArray);
-            };
-        };
+            }
+        }
     }
 
     days = chosenDayArray;
@@ -248,30 +289,44 @@ $("#create-course-link").on("click", function() {
     });
 });
 
+//home button logic
+var homeLocation = $('.go-home');
+homeLocation.on("click", function() {
+    if (firebase.auth().currentUser != null) {
+        homeLocation.attr("href", "home.html");
+    } else {
+        homeLocation.attr("href", "anonymousConsole.html");
+    }
+});
 
 
-
-//var
-var topics = ["cooking", "home organization", "car maintanence", "laundry", "interviewing"];
+//search logic
+var topics = ["cooking", "home organization", "car maintenance", "laundry", "interviewing"];
 var topicButtonsArray = [];
 var searchInput;
 
 //user specific topic buttons
 function renderButtons() {
-
-
     searchInput = $('.search-nav').val().trim().toLowerCase();
 
     var a = $("<button>");
 
-    a.attr("data-keyword", );
+
+    a.attr({
+        "data-keyword": searchInput,
+        "name": searchInput
+    });
+    a.text(searchInput);
+
     searchInput = searchInput.replace(/\s+/g, '-');
 
-    a.addClass(searchInput);
+    a.addClass(searchInput + " userButton button");
 
-    $(".user-topic-buttons-div").append(a);
+
+    $(".user-topic-buttons-div").append(a);    
 
 }
+
 
 function search() {
     searchInput = $('.search-nav').val().trim().toLowerCase();
@@ -290,10 +345,12 @@ function search() {
             topics.push(searchInput);
             topicButtonsArray.push(searchInput);
             renderButtons();
-
+            localStorage.setItem("keyword", searchInput);
+            // window.location.href = "resourcePanel.html";
 
         } else {
-
+            localStorage.setItem("keyword", searchInput);
+            window.location.href = "resourcePanel.html";
         }
 
     }
@@ -301,5 +358,54 @@ function search() {
 
 $('.search-button').on("click", function() {
     search();
+});
+$('.search-nav').bind('keypress', function(e) {
+    var code = e.keyCode || e.which;
+    if (code == 13) {
+        search();
+    }
+});
 
-})
+
+$(".user-topic-buttons-div").on("click", ".userButton", function() {
+    console.log("yay!");
+
+
+    console.log($(this).attr("name"));
+    localStorage.setItem("keyword", $(this).attr("class"));
+
+    window.location.href = "resourcePanel.html";
+
+});
+
+//function to add pages to read each day to the book div on resource panel
+$('#amountOfHours').blur(function() {
+    checkDaysChecked();
+    amountOfDays = chosenDayArray.length;
+    weeks = $('#amountOfHours').val().trim();
+    totalDays = amountOfDays * weeks;
+    pagesPerDay = Math.ceil(bookOneApi.pages/totalDays);
+    $('#timeToRead').text('You will have to read around ' + pagesPerDay + ' pages every day of studying.');
+});
+
+$('.weekdayCheckbox').on('click', function() {
+  if(weeks != ''){
+    checkDaysChecked();
+    amountOfDays = chosenDayArray.length;
+    weeks = $('#amountOfHours').val().trim();
+    totalDays = amountOfDays * weeks;
+    pagesPerDay = Math.ceil(bookOneApi.pages/totalDays);
+    $('#timeToRead').text('You will have to read around ' + pagesPerDay + ' pages every day of studying.');
+  }
+});
+
+function checkDaysChecked() {
+  chosenDayArray = [];
+  dayArray.forEach(function(dayOfWeek) {
+    if($(dayOfWeek).is(':checked')){
+      chosenDayArray.push(dayOfWeek);
+    }
+  });
+};
+
+//create buttons from firebase

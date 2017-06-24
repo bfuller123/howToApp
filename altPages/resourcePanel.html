@@ -15,7 +15,7 @@
 <body style="background-image: none">
     <nav class="nav white-background">
         <div class="nav-left">
-            <a href="#" class="nav-item">
+            <a class="nav-item go-home">
                 <h4 class='brand-nav mint-green-background'>How To...</h4>
             </a>
         </div>
@@ -29,9 +29,6 @@
             <div class="nav-item">
                 <button type="button" id="logOutButton" class='button mint-green-font white-background navButton'>Log Out</button>
             </div>
-            <!--   <div class="nav-item">
-                  <button type="button" id="signUpButton" class='button mint-green-font white-background navButton'>Sign Up</button>
-            </div> -->
         </div>
         </div>
     </nav>
@@ -51,7 +48,7 @@
                         <li class="category" data-keyword="Home Organization">Home Organization</li>
                     </a>
                     <a href="#">
-                        <li class="category" data-keyword="Car Maintanence">Car Maintanence</li>
+                        <li class="category" data-keyword="Car Maintenance">Car Maintenance</li>
                     </a>
                     <a href="#">
                         <li class="category" data-keyword="Laundry">Laundry</li>
@@ -106,6 +103,9 @@
                             </figure>
                             <p id="bookOneDescription"></p>
                         </div>
+                        <p id="bookOnePages"></p>
+                        <br>
+                        <h2 class="white-font" id="timeToRead"></h2>
                     </div>
                 </div>
             </div>
@@ -125,6 +125,40 @@
                 </article>
             </div>
         </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal login">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <!-- Login Form -->
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input class="emialInput input" type="email" placeholder="Email">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-envelope"></i>
+                   </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input class="passwordInput input" type="password" placeholder="Password">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-lock"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <button class="button is-primary loginSubmit">
+                        Login
+                    </button>
+                </p>
+            </div>
+        </div>
+        <button class="modal-close"></button>
+    </div>
+    </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

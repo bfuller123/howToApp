@@ -1,4 +1,16 @@
 //TODO: make it so it only returns results with ratings of 4 or more
+var bookMath = new function() {
+  this.wordsPerPage = 500;
+  this.wordsPerMin = 220; //TODO: replace with userWPM(divided by 1.5 since technical?)
+  this.pagesPerHour = (this.wordsPerMin / this.wordsPerPage) * 60;
+  this.pagesPerDay = Math.ceil(this.pagesPerHour * 3); //TODO: replace three with the amount of hours user wants to spend each day studying
+  this.getDaysToRead = function(pages, hoursEachDay) {
+    return Math.ceil(pages / (hoursEachDay * bookMath.pagesPerHour));
+  };
+  this.getHoursToReadPages = function(pages) {
+    return Math.ceil(pages/bookMath.pagesPerHour);
+  }
+};
 
 var bookOneApi = null;
 
@@ -32,20 +44,15 @@ $(document).ready(function($) {
         },
         addDescription: function(book, description) {
             $("#" + book + "Description").text(description);
+        },
+        addPages: function(book, pages) {
+            $("#" + book + "Pages").text(pages + " pages");
         }
+
     };
 
     var books = ['bookOne'];
 
-    var bookMath = new function() {
-        this.wordsPerPage = 500;
-        this.wordsPerMin = 220; //TODO: replace with userWPM(divided by 1.5 since technical?)
-        this.pagesPerHour = (this.wordsPerMin / this.wordsPerPage) * 60;
-        this.pagesPerDay = Math.ceil(this.pagesPerHour * 3); //TODO: replace three with the amount of hours user wants to spend each day studying
-        this.getDaysToRead = function(pages, hoursEachDay) {
-            return Math.ceil(pages / (hoursEachDay * bookMath.pagesPerHour));
-        };
-    };
 
     $.ajax({
 
@@ -70,6 +77,7 @@ $(document).ready(function($) {
             pageManipulation.addTitle(books[i], truncatedTitle);
             pageManipulation.addImage(books[i], googleApi[books[i]].image);
             pageManipulation.addDescription(books[i], truncatedDescription);
+            pageManipulation.addPages(books[i], googleApi[books[i]].pages);
 
         }
     });
