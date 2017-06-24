@@ -15,7 +15,7 @@ var user = null;
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
-var loggedIn = true;
+var loggedIn = false;
 
 //vars for grabbing course data from resource panel
 
@@ -224,8 +224,8 @@ $("#create-course-link").on("click", function() {
 
                 chosenDayArray.push(dayArray[i].data("name"));
                 console.log(chosenDayArray);
-            };
-        };
+            }
+        }
     }
 
     days = chosenDayArray;
@@ -272,19 +272,25 @@ var searchInput;
 //user specific topic buttons
 function renderButtons() {
 
-
     searchInput = $('.search-nav').val().trim().toLowerCase();
 
     var a = $("<button>");
 
-    a.attr("data-keyword", );
+    a.attr({
+        "data-keyword": searchInput,
+        "name": searchInput
+    });
+    a.text(searchInput);
+
     searchInput = searchInput.replace(/\s+/g, '-');
 
-    a.addClass(searchInput);
+    a.addClass(searchInput + " userButton button");
+
 
     $(".user-topic-buttons-div").append(a);
 
 }
+
 
 function search() {
     searchInput = $('.search-nav').val().trim().toLowerCase();
@@ -303,10 +309,12 @@ function search() {
             topics.push(searchInput);
             topicButtonsArray.push(searchInput);
             renderButtons();
-
+            localStorage.setItem("keyword", searchInput);
+            // window.location.href = "resourcePanel.html";
 
         } else {
-
+            localStorage.setItem("keyword", searchInput);
+            window.location.href = "resourcePanel.html";
         }
 
     }
@@ -314,5 +322,22 @@ function search() {
 
 $('.search-button').on("click", function() {
     search();
+});
+$('.search-nav').bind('keypress', function(e) {
+    var code = e.keyCode || e.which;
+    if (code == 13) {
+        search();
+    }
+});
 
-})
+
+$(".user-topic-buttons-div").on("click", ".userButton", function() {
+    console.log("yay!");
+
+    console.log($(this).attr("name"));
+    localStorage.setItem("keyword", $(this).attr("class"));
+
+    window.location.href = "resourcePanel.html";
+
+
+});
