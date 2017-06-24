@@ -36,16 +36,7 @@ var totalDays = "";
 var pagesPerDay = "";
 var userCourses = {};
 
-function userLoggedIn(){
-    var searchNav = $('.gray-font');
-    if (loggedIn === false){
-        console.log("im here!!");
-        $('#logOutButton').hide();
-        $(".nav-right").append(searchNav);
-    }
-}
 
-userLoggedIn();
 
 //Truncate string function for books and newsapi
 function truncateString(str, num) {
@@ -109,11 +100,13 @@ function signUserIn() {
             changeElementID('#loginButton', 'logOutButton');
             loggedIn = true;
 
+
               if (location.href.endsWith('anonymousConsole.html')) {
                 window.location.href = "home.html";
               } else if (location.href.endsWith('index.html') == true || window.location.href == "https://bfuller123.github.io/howToApp/") {
                 window.location.href = "altPages/home.html";
               }
+
 
         } else {
             user = null;
@@ -139,15 +132,15 @@ $("#loginButton").on("click", function() {
     $(".login").addClass("is-active");
 });
 
-// window.onload = function() {
-//   if (firebase.auth().currentUser != null) {
-//     changeElementText('#loginButton', 'Log Out');
-//     changeElementID('#loginButton', 'logOutButton');
-//   } else {
-//     changeElementText('#logOutButton', 'Login');
-//     changeElementID('#logOutButton', 'loginButton');
-//   }
-// }
+window.onload = function() {
+    if (firebase.auth().currentUser != null) {
+        changeElementText('#loginButton', 'Log Out');
+        changeElementID('#loginButton', 'logOutButton');
+    } else {
+        changeElementText('#logOutButton', 'Login');
+        changeElementID('#logOutButton', 'loginButton');
+    }
+}
 
 //Grab user input Sign Up
 
@@ -207,18 +200,31 @@ $("#logOutButton").on("click", function(event) {
 
 });
 
-//On click to grab course which was clicked
-$(".card").on("click", function() {
-    localStorage.setItem("keyword", $(this).data("keyword"));
+function userLoggedIn() {
+    var searchNav = $('.gray-font');
+    if (loggedIn == true) {
+        console.log("im here!!");
+        // $('#logOutButton').hide();
+        $(".nav-right").append(searchNav);
 
-});
+        //On click to grab course which was clicked
+        $(".card").on("click", function() {
+            localStorage.setItem("keyword", $(this).data("keyword"));
+
+        });
 
 
-//On click to grab course which was clicked on resourcepanel
-$(".category").on("click", function() {
-    localStorage.setItem("keyword", $(this).data("keyword"));
-    window.location.reload();
-});
+        //On click to grab course which was clicked on resourcepanel
+        $(".category").on("click", function() {
+            localStorage.setItem("keyword", $(this).data("keyword"));
+            window.location.reload();
+        });
+    }
+}
+
+userLoggedIn();
+
+
 
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
