@@ -53,21 +53,23 @@ function createUser(user, username) {
     firebase.database().ref().child('users').child(user).update({
         name: username,
         courses: {
-            0: 'Car Maintainence',
-            1: 'Home Organization',
-            2: 'Cooking',
-            3: 'Create a Resume'
+            // 0: 'Car Maintainence'
+            // 1: 'Home Organization',
+            // 2: 'Cooking',
+            // 3: 'Create a Resume'
         }
     });
 }
 
-//retrieve user data on load and when updating their courses
+// retrieve user data on load and when updating their courses
 function getUserData(user) {
     database.ref().child('users').child(user).on('value', function(snapshot) {
         userCourses = snapshot.val().courses;
         console.log(userCourses);
     });
 }
+
+
 
 function addItemToObject(object, item) {
 
@@ -90,8 +92,10 @@ function signUserIn() {
         if (user) {
             // user = user.uid;
             user = firebase.auth().currentUser.uid;
+            localStorage.setItem("user", user);
+
             createUser(user, name);
-            getUserData(user);
+            // getUserData(user);
             // User is signed in.
             $('.nameInput').html('Name');
             $('.emailInput').html('Email');
@@ -115,6 +119,10 @@ function signUserIn() {
         }
     });
 }
+
+// getUserData(user);
+
+
 
 // database.ref().child('users').child(user).on('value', function(snapshot){
 //     userCourses = snapshot.val().courses;
@@ -247,15 +255,20 @@ $("#create-course-link").on("click", function() {
     days = chosenDayArray;
     totalDays = (chosenDayArray.length * weeks);
 
+    // getUserData(user);
 
+    // addItemToObject(userCourses, courseName);
 
-
+    // database.ref().child('users').child(user).update({
+    //     courses: userCourses
+    // });
 
     // console.log(youtubeVideoOneApi.snippet.title);
 
     database.ref().child('users').child(user).child('courses').update({
-        courses: userCourses,
+        // courses: userCourses,
         [courseName]: {
+            name: courseName,
             weeks: weeks,
             days: chosenDayArray,
             totalDays: totalDays,
@@ -263,15 +276,14 @@ $("#create-course-link").on("click", function() {
             bookAuthor: bookOneApi.author,
             bookIsbn: bookOneApi.isbn,
             bookPages: bookOneApi.pages,
+            bookImg: bookOneApi.image,
             articleOneTitle: articleOneApi.title,
             articleOneUrl: articleOneApi.url,
             articleTwoTitle: articleTwoApi.title,
             articleTwoUrl: articleTwoApi.url,
             articleThreeTitle: articleThreeApi.title,
             articleThreeUrl: articleThreeApi.url,
-            youtubeVideoOneTitle: youtubeVideoOneApi.snippet.title,
             youtubeVideoOneId: youtubeVideoOneApi.id.videoId,
-            youtubeVideoTwoTitle: youtubeVideoTwoApi.snippet.title,
             youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
         }
     });
