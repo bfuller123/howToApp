@@ -16,6 +16,7 @@ function changeKeysToArray(obj) {
 }
 
 usersDatabase.on('value', function(snapshot) {
+  $('.user-topic-buttons-div').html('');
   var currentUserUid = firebase.auth().currentUser.uid;
   var coursesObj = snapshot.val()[currentUserUid].courses;
   console.log(currentUserUid);
