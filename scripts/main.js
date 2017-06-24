@@ -202,7 +202,7 @@ $("#logOutButton").on("click", function(event) {
 
 function userLoggedIn() {
     var searchNav = $('.gray-font');
-    if (loggedIn === true) {
+    if (loggedIn == true) {
         console.log("im here!!");
         // $('#logOutButton').hide();
         $(".nav-right").append(searchNav);
