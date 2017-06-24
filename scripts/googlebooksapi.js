@@ -7,6 +7,9 @@ var bookMath = new function() {
   this.getDaysToRead = function(pages, hoursEachDay) {
     return Math.ceil(pages / (hoursEachDay * bookMath.pagesPerHour));
   };
+  this.getHoursToReadPages = function(pages) {
+    return Math.ceil(pages/bookMath.pagesPerHour);
+  }
 };
 
 var bookOneApi = null;
