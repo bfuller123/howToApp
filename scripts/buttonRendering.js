@@ -4,9 +4,9 @@ var usersDatabase = firebase.database().ref().child('users');
 function dynamicAddButtons(arr, obj) {
     for (var i = 0; i < arr.length; i++) {
       var button = $('<button>');
-      button.addClass('button button-primary');
+      button.addClass('button button-primary white-background dark-gray-font course-button');
       button.attr('data-keyword', arr[i]);
-      button.text(obj[i]);
+      button.text(arr[i]);
       $('.user-topic-buttons-div').append(button);
     }
 }
@@ -19,8 +19,9 @@ usersDatabase.on('value', function(snapshot) {
   $('.user-topic-buttons-div').html('');
   var currentUserUid = firebase.auth().currentUser.uid;
   var coursesObj = snapshot.val()[currentUserUid].courses;
-  console.log(currentUserUid);
   userCoursesList = changeKeysToArray(coursesObj);
-  console.log(userCoursesList);
   dynamicAddButtons(userCoursesList, coursesObj);
 });
+
+//TODO: need to add functionality to buttons rendered on home page
+//$('.course-button').on('click', )
