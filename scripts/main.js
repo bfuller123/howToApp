@@ -15,7 +15,7 @@ var user = null;
 var name = "";
 var loginEmail = "";
 var loginPassword = "";
-var loggedIn = true;
+var loggedIn = false;
 
 //vars for grabbing course data from resource panel
 
@@ -36,6 +36,13 @@ var totalDays = "";
 var pagesPerDay = "";
 var userCourses = {};
 
+function hideNavButtons(){
+    if (loggedIn === false){
+        $('#logOutButton').hide();
+    }
+}
+
+hideNavButtons();
 
 //Truncate string function for books and newsapi
 function truncateString(str, num) {
@@ -155,6 +162,9 @@ $('#modalLogin').on("click", function(event) {
         var errorMessage = error.message;
 
     });
+
+
+
     signUserIn();
 });
 
@@ -199,8 +209,8 @@ $("#create-course-link").on("click", function() {
 
                 chosenDayArray.push(dayArray[i].data("name"));
                 console.log(chosenDayArray);
-            };
-        };
+            }
+        }
     }
 
     days = chosenDayArray;
@@ -252,7 +262,7 @@ function renderButtons() {
 
     var a = $("<button>");
 
-    a.attr("data-keyword", );
+    a.attr("data-keyword");
     searchInput = searchInput.replace(/\s+/g, '-');
 
     a.addClass(searchInput);
@@ -290,4 +300,4 @@ function search() {
 $('.search-button').on("click", function() {
     search();
 
-})
+});
