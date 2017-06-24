@@ -202,29 +202,29 @@ $("#logOutButton").on("click", function(event) {
 
 function userLoggedIn() {
     var searchNav = $('.gray-font');
-    if (loggedIn == true) {
+    if (loggedIn === true) {
         console.log("im here!!");
         // $('#logOutButton').hide();
         $(".nav-right").append(searchNav);
 
-        //On click to grab course which was clicked
-        $(".card").on("click", function() {
-            localStorage.setItem("keyword", $(this).data("keyword"));
-
-        });
-
-
-        //On click to grab course which was clicked on resourcepanel
-        $(".category").on("click", function() {
-            localStorage.setItem("keyword", $(this).data("keyword"));
-            window.location.reload();
-        });
     }
 }
 
 userLoggedIn();
 
 
+//On click to grab course which was clicked
+$(".card").on("click", function() {
+    localStorage.setItem("keyword", $(this).data("keyword"));
+
+});
+
+
+//On click to grab course which was clicked on resourcepanel
+$(".category").on("click", function() {
+    localStorage.setItem("keyword", $(this).data("keyword"));
+    window.location.reload();
+});
 
 //On click to grab course data & day data
 $("#create-course-link").on("click", function() {
