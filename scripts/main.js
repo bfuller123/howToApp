@@ -101,11 +101,11 @@ function signUserIn() {
             loggedIn = true;
 
 
-              if (location.href.endsWith('anonymousConsole.html')) {
+            if (location.href.endsWith('anonymousConsole.html')) {
                 window.location.href = "home.html";
-              } else if (location.href.endsWith('index.html') == true || window.location.href == "https://bfuller123.github.io/howToApp/") {
+            } else if (location.href.endsWith('index.html') == true || window.location.href == "https://bfuller123.github.io/howToApp/") {
                 window.location.href = "altPages/home.html";
-              }
+            }
 
 
         } else {
@@ -140,7 +140,7 @@ window.onload = function() {
         changeElementText('#logOutButton', 'Login');
         changeElementID('#logOutButton', 'loginButton');
     }
-}
+};
 
 //Grab user input Sign Up
 
@@ -277,10 +277,18 @@ $("#create-course-link").on("click", function() {
     });
 });
 
+//home button logic
+var homeLocation = $('.go-home');
+homeLocation.on("click", function() {
+    if (firebase.auth().currentUser != null) {
+        homeLocation.attr("href", "home.html");
+    } else {
+        homeLocation.attr("href", "anonymousConsole.html");
+    }
+});
 
 
-
-//var
+//search logic
 var topics = ["cooking", "home organization", "car maintenance", "laundry", "interviewing"];
 var topicButtonsArray = [];
 var searchInput;
