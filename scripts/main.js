@@ -218,28 +218,28 @@ $("#create-course-link").on("click", function() {
 
     // console.log(youtubeVideoOneApi.snippet.title);
 
-    database.ref().child('users').child(user).update({
-        // courses: userCourses,
-        [courseName]: {
-            weeks: weeks,
-            days: chosenDayArray,
-            totalDays: totalDays,
-            bookTitle: bookOneApi.title,
-            bookAuthor: bookOneApi.author,
-            bookIsbn: bookOneApi.isbn,
-            bookPages: bookOneApi.pages,
-            articleOneTitle: articleOneApi.title,
-            articleOneUrl: articleOneApi.url,
-            articleTwoTitle: articleTwoApi.title,
-            articleTwoUrl: articleTwoApi.url,
-            articleThreeTitle: articleThreeApi.title,
-            articleThreeUrl: articleThreeApi.url,
-            youtubeVideoOneTitle: youtubeVideoOneApi.snippet.title,
-            youtubeVideoOneId: youtubeVideoOneApi.id.videoId,
-            youtubeVideoTwoTitle: youtubeVideoTwoApi.snippet.title,
-            youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
-        }
-    });
+    // database.ref().child('users').child(user).update({
+    //     // courses: userCourses,
+    //     [courseName]: {
+    //         weeks: weeks,
+    //         days: chosenDayArray,
+    //         totalDays: totalDays,
+    //         bookTitle: bookOneApi.title,
+    //         bookAuthor: bookOneApi.author,
+    //         bookIsbn: bookOneApi.isbn,
+    //         bookPages: bookOneApi.pages,
+    //         articleOneTitle: articleOneApi.title,
+    //         articleOneUrl: articleOneApi.url,
+    //         articleTwoTitle: articleTwoApi.title,
+    //         articleTwoUrl: articleTwoApi.url,
+    //         articleThreeTitle: articleThreeApi.title,
+    //         articleThreeUrl: articleThreeApi.url,
+    //         youtubeVideoOneTitle: youtubeVideoOneApi.snippet.title,
+    //         youtubeVideoOneId: youtubeVideoOneApi.id.videoId,
+    //         youtubeVideoTwoTitle: youtubeVideoTwoApi.snippet.title,
+    //         youtubeVideoTwoId: youtubeVideoTwoApi.id.videoId
+    //     }
+    // });
 });
 
 
