@@ -61,12 +61,12 @@ function createUser(user, username) {
 }
 
 //retrieve user data on load and when updating their courses
-function getUserData(user) {
-    database.ref().child('users').child(user).on('value', function(snapshot) {
-        userCourses = snapshot.val().courses;
-        console.log(userCourses);
-    });
-}
+// function getUserData(user) {
+//     database.ref().child('users').child(user).on('value', function(snapshot) {
+//         userCourses = snapshot.val().courses;
+//         console.log(userCourses);
+//     });
+// }
 
 function addItemToObject(object, item) {
 

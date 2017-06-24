@@ -1,24 +1,27 @@
-// console.log ("Yo")
-// console.log (userCourses);
+// user = firebase.auth().currentUser.uid;
 
-// function getUserData(user) {
-//     database.ref().child('users').child(user).on('value', function(snapshot) {
-//         userCourses = snapshot.val().courses;
-//         console.log(userCourses);
+// firebase.auth().onAuthStateChanged(function(user) {
+//         if (user) {
+//             user = firebase.auth().currentUser.uid;
+//         } else {
+//             user = null;
+//         }
 //     });
-// }
+
+
+
+function getUserData(user) {
+    database.ref().child('users').child(user).child('courses').on('value', function(snapshot) {
+        userCourses = snapshot.val().courses;
+        $("#your-courses").append(userCourses);
+        
+        // console.log(userCourses);
+    });
+};
+
+getUserData();
 
 // var courses = "";
-
-// database.ref().child('users').child(user).on('value', function(snapshot) {
-//     courses = snapshot.val();
-//         // userCourses = snapshot.val().courses;
-//         // console.log(userCourses);
-//     });
-
-// var user = firebase.auth().currentUser.uid;
-
-// getUserData(user)
 
 // database.ref().on("child_added", function(childSnapshot) {
 
