@@ -36,6 +36,13 @@ var totalDays = "";
 var pagesPerDay = "";
 var userCourses = {};
 
+// function hideNavButtons(){
+//     if (loggedIn === false){
+//         $('#logOutButton').hide();
+//     }
+// }
+
+// hideNavButtons();
 
 //Truncate string function for books and newsapi
 function truncateString(str, num) {
@@ -175,7 +182,7 @@ $('#modalLogin').on("click", function(event) {
     firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-        $('#loginErrorMessage').text(errorMessage)
+        $('#loginErrorMessage').text(errorMessage);
 
     });
     if (firebase.auth().currentUser != null){
@@ -276,6 +283,7 @@ function renderButtons() {
 
     var a = $("<button>");
 
+
     a.attr({
         "data-keyword": searchInput,
         "name": searchInput
@@ -334,10 +342,10 @@ $('.search-nav').bind('keypress', function(e) {
 $(".user-topic-buttons-div").on("click", ".userButton", function() {
     console.log("yay!");
 
+
     console.log($(this).attr("name"));
     localStorage.setItem("keyword", $(this).attr("class"));
 
     window.location.href = "resourcePanel.html";
-
 
 });
