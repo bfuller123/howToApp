@@ -246,6 +246,12 @@ h4 {
     margin: 0 1%;
 }
 
+/*.card {
+    height: 500px !important;
+    width: 300px !important;
+    margin: 0 1%;
+}*/
+
 .card img {
     height: 175px !important;
 }
