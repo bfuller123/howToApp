@@ -326,6 +326,12 @@ h6 {
     max-width: 90%;
 }
 
+.userButton {
+    padding: 5%;
+    font-size: 150%;
+    margin-bottom: 5%;
+}
+
 
 /*syllabus/calendar page*/
 
