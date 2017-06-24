@@ -295,7 +295,6 @@ var searchInput;
 
 //user specific topic buttons
 function renderButtons() {
-
     searchInput = $('.search-nav').val().trim().toLowerCase();
 
     var a = $("<button>");
@@ -312,7 +311,7 @@ function renderButtons() {
     a.addClass(searchInput + " userButton button");
 
 
-    $(".user-topic-buttons-div").append(a);
+    $(".user-topic-buttons-div").append(a);    
 
 }
 
@@ -396,3 +395,5 @@ function checkDaysChecked() {
     }
   });
 };
+
+//create buttons from firebase
