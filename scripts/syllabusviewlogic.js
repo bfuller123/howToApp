@@ -6,6 +6,11 @@ function toTitleCase(str) {
     });
 }
 
+function minutesOfReading(pagesPerDay) {
+    var rate = (500 / 220);
+    return Math.floor(pagesPerDay / rate);
+}
+
 function pullFromFirebase(user) {
     database.ref().child('users').child(user).on('value', function(snapshot) {
         var userCourses = snapshot.val().courses;
@@ -25,7 +30,7 @@ function pullFromFirebase(user) {
             var SlickOuterDiv = $('<div class="slick-outer-div">');
 
             for (var j = 0; j < userCourses[i].days.length; j++) {
-                SlickOuterDiv.append('<div class="card"><header class="card-header"><p class="card-header-title">' + userCourses[i].days[j] + '</p></header><div class="card-content"><div class="content"><p> Read ' + pagesPerDay + ' pages per day of <span class="underline">' + capitalizedBookTitle + '</span></p><p class="is-small">(Approximately ' + '1200000' + ' minutes of reading.)</p></div></div></div>');
+                SlickOuterDiv.append('<div class="card"><header class="card-header"><p class="card-header-title">' + userCourses[i].days[j] + '</p></header><div class="card-content"><div class="content"><p> Read ' + pagesPerDay + ' pages per day of <span class="underline">' + capitalizedBookTitle + '</span></p><p class="is-small">(Approximately ' + minutesOfReading(pagesPerDay) + ' minutes of reading.)</p></div></div></div>');
             };
 
             var link1 = ('<a href="' + userCourses[i].articleOneUrl + '">' + userCourses[i].articleOneTitle + '</a>');
