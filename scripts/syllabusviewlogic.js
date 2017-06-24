@@ -44,7 +44,7 @@ function pullFromFirebase(user) {
             var amazonLink = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords="
 
             newColumn1.append(SlickOuterDiv);
-            newColumn2.append('<div class="card"><header class="card-header"><p class="card-header-title">Course Resources</p></header><div class="card-content"><div class="content"><img class="is-128" src="' + userCourses[i].bookImg + '"><p>Book: <span class="underline">' + capitalizedBookTitle + '</span> by ' + userCourses[i].bookAuthor + ' </p><a href="' + amazonLink + userCourses[i].bookIsbn + '"><p>Find me on Amazon</p></a><br><p>Articles: ' + link1 + '</p><p>' + link2 + '</p><p>' + link3 + '</p><p>Video: </p>' + youtubeVideo1 + '<br>' + youtubeVideo2 + '</div></div></div>');
+            newColumn2.append('<div class="card"><header class="card-header"><p class="card-header-title">Course Resources</p></header><div class="card-content"><div class="content"><img class="is-128" src="' + userCourses[i].bookImg + '"><p>Book: <span class="underline">' + capitalizedBookTitle + '</span> by ' + userCourses[i].bookAuthor + ' </p><a href="' + amazonLink + userCourses[i].bookIsbn + '"><p>Find me on Amazon</p></a><br><p>Articles:</p><p>' + link1 + '</p><p>' + link2 + '</p><p>' + link3 + '</p><p>Video: </p>' + youtubeVideo1 + '<br>' + youtubeVideo2 + '</div></div></div>');
 
             newColumnMama.append(newColumn1);
             newColumnMama.append(newColumn2)

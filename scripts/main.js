@@ -48,6 +48,13 @@ function truncateString(str, num) {
     }
 }
 
+// capitalizes the first letter of each word and makes the rest lowercase
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
+
 //create user for firebase
 function createUser(user, username) {
     firebase.database().ref().child('users').child(user).update({
@@ -238,7 +245,7 @@ $(".category").on("click", function() {
 $("#create-course-link").on("click", function() {
 
     user = firebase.auth().currentUser.uid;
-    courseName = localStorage.getItem("keyword");
+    courseName = toTitleCase(localStorage.getItem("keyword"));
     weeks = $("#amountOfHours").val();
 
     for (var i = 0; i < dayArray.length; i++) {
