@@ -182,19 +182,12 @@ $('#modalLogin').on("click", function(event) {
     firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-        $('#loginErrorMessage').text(errorMessage)
+        $('#loginErrorMessage').text(errorMessage);
 
     });
-<<<<<<< HEAD
-
-
-
-    signUserIn();
-=======
     if (firebase.auth().currentUser != null){
       signUserIn();
     }
->>>>>>> b0e56ff7fa1c37336a0331a9b4de7321c6e1ec16
 });
 
 
@@ -286,19 +279,26 @@ var searchInput;
 //user specific topic buttons
 function renderButtons() {
 
-
     searchInput = $('.search-nav').val().trim().toLowerCase();
 
     var a = $("<button>");
 
-    a.attr("data-keyword");
+
+    a.attr({
+        "data-keyword": searchInput,
+        "name": searchInput
+    });
+    a.text(searchInput);
+
     searchInput = searchInput.replace(/\s+/g, '-');
 
-    a.addClass(searchInput);
+    a.addClass(searchInput + " userButton button");
+
 
     $(".user-topic-buttons-div").append(a);
 
 }
+
 
 function search() {
     searchInput = $('.search-nav').val().trim().toLowerCase();
@@ -317,10 +317,12 @@ function search() {
             topics.push(searchInput);
             topicButtonsArray.push(searchInput);
             renderButtons();
-
+            localStorage.setItem("keyword", searchInput);
+            // window.location.href = "resourcePanel.html";
 
         } else {
-
+            localStorage.setItem("keyword", searchInput);
+            window.location.href = "resourcePanel.html";
         }
 
     }
@@ -328,5 +330,22 @@ function search() {
 
 $('.search-button').on("click", function() {
     search();
+});
+$('.search-nav').bind('keypress', function(e) {
+    var code = e.keyCode || e.which;
+    if (code == 13) {
+        search();
+    }
+});
+
+
+$(".user-topic-buttons-div").on("click", ".userButton", function() {
+    console.log("yay!");
+
+
+    console.log($(this).attr("name"));
+    localStorage.setItem("keyword", $(this).attr("class"));
+
+    window.location.href = "resourcePanel.html";
 
 });
