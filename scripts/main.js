@@ -99,11 +99,11 @@ function signUserIn() {
             changeElementID('#loginButton', 'logOutButton');
             loggedIn = true;
 
-            if (window.location.pathname == "index.html" || "/howToApp/") {
+              if (location.href.endsWith('index.html') == true || window.location.href == "https://bfuller123.github.io/howToApp/") {
                 window.location.href = "altPages/home.html";
-            } else {
+              } else {
                 window.location.href = "home.html";
-            }
+              }
 
         } else {
             user = null;
