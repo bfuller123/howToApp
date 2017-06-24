@@ -99,10 +99,10 @@ function signUserIn() {
             changeElementID('#loginButton', 'logOutButton');
             loggedIn = true;
 
-              if (location.href.endsWith('index.html') == true || window.location.href == "https://bfuller123.github.io/howToApp/") {
-                window.location.href = "altPages/home.html";
-              } else {
+              if (location.href.endsWith('anonymousConsole.html')) {
                 window.location.href = "home.html";
+              } else if (location.href.endsWith('index.html') == true || window.location.href == "https://bfuller123.github.io/howToApp/") {
+                window.location.href = "altPages/home.html";
               }
 
         } else {
