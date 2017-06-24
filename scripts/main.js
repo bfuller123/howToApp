@@ -84,11 +84,11 @@ function addItemToObject(object, item) {
 }
 
 function changeElementText(item, newText) {
-  $(item).text(newText);
+    $(item).text(newText);
 }
 
 function changeElementID(item, newID) {
-  $(item).attr('id', newID);
+    $(item).attr('id', newID);
 }
 
 function signUserIn() {
@@ -185,8 +185,8 @@ $('#modalLogin').on("click", function(event) {
         $('#loginErrorMessage').text(errorMessage);
 
     });
-    if (firebase.auth().currentUser != null){
-      signUserIn();
+    if (firebase.auth().currentUser != null) {
+        signUserIn();
     }
 });
 
@@ -272,7 +272,7 @@ $("#create-course-link").on("click", function() {
 
 
 //var
-var topics = ["cooking", "home organization", "car maintanence", "laundry", "interviewing"];
+var topics = ["cooking", "home organization", "car maintenance", "laundry", "interviewing"];
 var topicButtonsArray = [];
 var searchInput;
 
