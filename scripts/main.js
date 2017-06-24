@@ -36,13 +36,16 @@ var totalDays = "";
 var pagesPerDay = "";
 var userCourses = {};
 
-// function hideNavButtons(){
-//     if (loggedIn === false){
-//         $('#logOutButton').hide();
-//     }
-// }
+function userLoggedIn(){
+    var searchNav = $('.gray-font');
+    if (loggedIn === false){
+        console.log("im here!!");
+        $('#logOutButton').hide();
+        $(".nav-right").append(searchNav);
+    }
+}
 
-// hideNavButtons();
+userLoggedIn();
 
 //Truncate string function for books and newsapi
 function truncateString(str, num) {
