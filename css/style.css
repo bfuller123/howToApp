@@ -229,7 +229,7 @@ h4 {
     font-weight: bolder;
 }
 
-.carousel-container {
+.course-button-container {
     padding-top: 2%;
 }
 
@@ -363,4 +363,28 @@ h6 {
 
 .underline {
     text-decoration: underline;
+}
+
+
+@media (max-width: 1000px) {
+  #carousel-container {
+    justify-content: space-around !important;
+  }
+
+  .card-main {
+      height: 250px !important;
+      width: 300px !important;
+      margin: 0 1%;
+  }
+
+  .card-header-title {
+    margin-top: -10%;
+    color: #009085;
+    font-size: 150%;
+    justify-content: center;
+  }
+
+  .card-definition {
+    visibility: hidden;
+  }
 }
