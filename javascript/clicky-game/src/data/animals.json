@@ -1,0 +1,64 @@
+{
+  "animals": [
+    {
+      "name": "pig",
+      "source": "/images/pig.png",
+      "find": "Find the pig",
+      "sound": "/images/pig.mp3"
+    },
+    {
+      "name": "horse",
+      "source": "/images/horse.png",
+      "find": "Find the horse",
+      "sound": "/sound/horse.mp3"
+    },
+    {
+      "name": "goose",
+      "source": "/images/goose.png",
+      "find": "Find the goose",
+      "sound": "/sound/goose.mp3"
+    },
+    {
+      "name": "dog",
+      "source": "/images/dog.png",
+      "find": "Find the dog",
+      "sound": "/sound/dog.mp3"
+    },
+    {
+      "name": "cow",
+      "source": "/images/cow.png",
+      "find": "Find the cow",
+      "sound": "/sound/cow.mp3"
+    },
+    {
+      "name": "donkey",
+      "source": "/images/donkey.png",
+      "find": "Find the donkey",
+      "sound": "/sound/donkey.mp3"
+    },
+    {
+      "name": "cat",
+      "source": "/images/cat.png",
+      "find": "Find the cat",
+      "sound": "/sound/cat.mp3"
+    },
+    {
+      "name": "bird",
+      "source": "/images/bird.png",
+      "find": "Find the bird",
+      "sound": "/sound/bird.mp3"
+    },
+    {
+      "name": "sheep",
+      "source": "/images/sheep.png",
+      "find": "Find the sheep",
+      "sound": "/sound/sheep.mp3"
+    },
+    {
+      "name": "goat",
+      "source": "/images/goat.png",
+      "find": "Find the goat",
+      "sound": "/sound/goat.mp3"
+    }
+  ]
+}
